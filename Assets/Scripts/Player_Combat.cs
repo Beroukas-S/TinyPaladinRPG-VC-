@@ -16,6 +16,8 @@ public class Player_Combat : MonoBehaviour
 
     public LayerMask enemyLayer;
 
+    public PlayerMovement playerMovement;
+
 
     public void Update()
     {
@@ -104,7 +106,7 @@ public class Player_Combat : MonoBehaviour
         animator.SetBool("isHatk", false);
         animator.SetBool("isHatkUp", false);
         animator.SetBool("isHatkDown", false);
-
+        playerMovement.ChangeState(PlayerState.Idle);
     }
 
 

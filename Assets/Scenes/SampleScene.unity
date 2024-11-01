@@ -118212,6 +118212,7 @@ MonoBehaviour:
   isKnocked: 0
   secondAttack: 0
   block: {fileID: 1886923282}
+  playerState: 0
 --- !u!95 &1789495753
 Animator:
   serializedVersion: 5
@@ -118279,6 +118280,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
+  playerMovement: {fileID: 1789495752}
 --- !u!114 &1789495757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118655,7 +118657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  blockCD: 0.2
+  blockCD: 1
   animator: {fileID: 1886923281}
   playerHealth: {fileID: 1789495754}
 --- !u!1 &1891152526
