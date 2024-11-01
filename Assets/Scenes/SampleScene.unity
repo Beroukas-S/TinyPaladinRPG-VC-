@@ -118427,6 +118427,7 @@ MonoBehaviour:
   attackCD: 0
   fireballDamage: 2
   fireballCD: 0.5
+  blockCD: 2
   currentHP: 15
   maxHP: 15
   speed: 5
@@ -118645,8 +118646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c77f19d246a74b9fafae5503ee476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  blockCD: 1
   animator: {fileID: 1886923281}
   playerHealth: {fileID: 1789495754}
 --- !u!1 &1891152526

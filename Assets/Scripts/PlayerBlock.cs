@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerBlock : MonoBehaviour
 {
-    public float timer;
-    public float blockCD;
+    private float timer;
 
     public Animator animator;
 
@@ -40,7 +39,7 @@ public class PlayerBlock : MonoBehaviour
     {
         animator.SetBool("onBlock", false);
         playerHealth.ChangeState(HealthState.Normal);
-        timer = blockCD;
+        timer = PlayerStats.Instance.blockCD;
     }
 
 

@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour
     public float attackCD;
     public float fireballDamage;
     public float fireballCD;
+    public float blockCD;
 
     [Header("Health")]
     public int currentHP;
