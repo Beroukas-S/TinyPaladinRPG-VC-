@@ -41,8 +41,16 @@ public class ProjectileScript : MonoBehaviour
             transform.position = collision.transform.position;
             //transform.position = (collision.transform.position - transform.position).normalized;
             animator.SetBool("onHit", true);
-            
         }
+        /* Να το φτιάξω με νέο layer ωστε το detection να γίνεται σε καλύτερο σημείο
+        else if (collision.gameObject.tag == "Terrain")
+        {
+            rb.velocity = Vector2.zero;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animator.SetBool("onHit", true);
+            transform.position = collision.transform.position;
+        }
+        */
     }
 
     public void DestroyFireball()

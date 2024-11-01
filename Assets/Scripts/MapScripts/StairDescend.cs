@@ -23,7 +23,7 @@ public class StairDescend : MonoBehaviour
             //stairsCollider.enabled = true;
 
         }
-        else
+        else if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 4;
             //stairClimb.counter--;

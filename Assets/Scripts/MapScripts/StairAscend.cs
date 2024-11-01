@@ -19,7 +19,7 @@ public class StairClimb : MonoBehaviour
             collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
             //counter++;
         }
-        else
+        else if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<SpriteRenderer>().sortingOrder = 15;
             //counter++;
