@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isKnocked = false;
 
+    //keeps track if it is a forestroke or backstroke
+    public bool secondAttack = false;
+
+    public PlayerBlock block;
+
 
     private void Start()
     {
@@ -28,12 +33,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         CheckBig();
-        CheckQuickAttack();
-        CheckHeavyAttack();
         mouseDirection.GetDirection();
+        CheckAttack();
+        CheckBlock();
     }
 
-    // Update is called 50 per second
+    // fixedUpdate is called 50 per second
     void FixedUpdate()
     {
         if (isKnocked == false) 
@@ -81,17 +86,44 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    //calls different method for backstroke or forestroke
+    //Quick attack = forehand, heavy attack = backhand
+    public void CheckAttack()
+    {
+        if (!secondAttack && Input.GetMouseButtonDown(0))
+        {
+            CheckQuickAttack();  
+        }
+        else if (secondAttack && Input.GetMouseButtonDown(0))
+        { 
+            CheckHeavyAttack();   
+        }
+    }
+
+    //changes the stroke
+    public void ChangeAttackAnim()
+    {
+        if (!secondAttack)
+        {
+            secondAttack = true;
+        }
+        else
+        { 
+            secondAttack= false;
+        }
+    }
+
     public void CheckQuickAttack()
     {
-        if (Input.GetMouseButtonDown(0) && mouseDirection.attackDirection == 3) //&& Input.GetAxis("Vertical") > 0)
+        if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.QuickAttackUp();
         }
-        else if (Input.GetMouseButtonDown(0) && mouseDirection.attackDirection == 4) // && Input.GetAxis("Vertical") < 0)
+        else if (mouseDirection.attackDirection == 4) 
         {
             playerCombat.QuickAttackDown();
         }
-        else if (Input.GetMouseButtonDown(0) && mouseDirection.attackDirection == 1)
+        else if (mouseDirection.attackDirection == 1)
         {
             if (faceDirection == -1)
             {
@@ -99,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.QuickAttack();
         }
-        else if (Input.GetMouseButtonDown(0) && mouseDirection.attackDirection == 2)
+        else if (mouseDirection.attackDirection == 2)
         {
             if (faceDirection == 1) 
             {
@@ -111,15 +143,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckHeavyAttack()
     {
-        if (Input.GetMouseButtonDown(1) && mouseDirection.attackDirection == 3) //&& Input.GetAxis("Vertical") > 0)
+        if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.HeavyAttackUp();
         }
-        else if (Input.GetMouseButtonDown(1) && mouseDirection.attackDirection == 4) // && Input.GetAxis("Vertical") < 0)//
+        else if (mouseDirection.attackDirection == 4) 
         {
             playerCombat.HeavyAttackDown();
         }
-        else if (Input.GetMouseButtonDown(1) && mouseDirection.attackDirection == 1)
+        else if (mouseDirection.attackDirection == 1)
         {
             if (faceDirection == -1)
             {
@@ -127,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.HeavyAttack();
         }
-        else if (Input.GetMouseButtonDown(1) && mouseDirection.attackDirection == 2)
+        else if (mouseDirection.attackDirection == 2)
         {
             if (faceDirection == 1)
             {
@@ -144,9 +176,16 @@ public class PlayerMovement : MonoBehaviour
             growBig.GrowBig();
         }
     }
-    
 
-
-
-
+    public void CheckBlock()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            block.Block();
+        }
+        else
+        {
+            block.BlockEnd();
+        }
+    }
 }

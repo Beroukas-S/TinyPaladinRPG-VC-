@@ -7,8 +7,7 @@ public class Player_Combat : MonoBehaviour
 {
     //attack animation
     public Animator animator;
-    private float quickTimer;
-    private float heavyTimer;
+    private float timer;
 
     //attack damage and hitpoint
     public Transform attackPointHorizontal;
@@ -21,24 +20,20 @@ public class Player_Combat : MonoBehaviour
     public void Update()
     {
         //cooldown timer 
-        if (quickTimer > 0)
+        if (timer > 0)
         {
-            quickTimer -= Time.deltaTime;
-        }
-        if (heavyTimer > 0)
-        { 
-            heavyTimer -= Time.deltaTime;
+            timer -= Time.deltaTime;
         }
     }
 
     //attack animations for quick attacks and heavy attacks depending on direction
     public void QuickAttack()
     {
-        if (quickTimer <= 0)
+        if (timer <= 0)
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isQatk", true);
-            quickTimer = PlayerStats.Instance.quickAttackCD;
+            timer = PlayerStats.Instance.attackCD;
         }
     }
 
@@ -46,55 +41,55 @@ public class Player_Combat : MonoBehaviour
 
     public void QuickAttackUp()
     {
-        if (quickTimer <= 0)
+        if (timer <= 0)
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isQatkUP", true);
-            quickTimer = PlayerStats.Instance.quickAttackCD;
+            timer = PlayerStats.Instance.attackCD;
         }
 
     }
 
     public void QuickAttackDown()
     {
-        if (quickTimer <= 0)
+        if (timer <= 0)
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isQatkDown", true);
-            quickTimer = PlayerStats.Instance.quickAttackCD;
+            timer = PlayerStats.Instance.attackCD;
         }
 
     }
 
     public void HeavyAttack()
     {
-        if (heavyTimer <= 0)
+        if (timer <= 0)
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isHatk", true);
-            heavyTimer = PlayerStats.Instance.heavyAttackCD;
+            timer = PlayerStats.Instance.attackCD;
         }
 
     }
 
     public void HeavyAttackUp()
     {
-        if (heavyTimer <= 0)
+        if (timer <= 0)
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isHatkUp", true);
-            heavyTimer = PlayerStats.Instance.heavyAttackCD;
+            timer = PlayerStats.Instance.attackCD;
         }
 
     }
 
     public void HeavyAttackDown()
     {
-        if (heavyTimer <= 0)
+        if (timer <= 0)
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isHatkDown", true);
-            heavyTimer = PlayerStats.Instance.heavyAttackCD;
+            timer = PlayerStats.Instance.attackCD;
         }
 
     }
@@ -109,6 +104,7 @@ public class Player_Combat : MonoBehaviour
         animator.SetBool("isHatk", false);
         animator.SetBool("isHatkUp", false);
         animator.SetBool("isHatkDown", false);
+
     }
 
 
@@ -119,7 +115,7 @@ public class Player_Combat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.quickDamage);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
             enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
         }
     }
@@ -130,7 +126,7 @@ public class Player_Combat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.quickDamage);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
             enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
         }
     }
@@ -141,7 +137,7 @@ public class Player_Combat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.quickDamage);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
             enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
         }
     }
@@ -152,7 +148,7 @@ public class Player_Combat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.heavyDamage);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
             enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
         }
     }
@@ -163,7 +159,7 @@ public class Player_Combat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.heavyDamage);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
             enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
         }
     }
@@ -174,7 +170,7 @@ public class Player_Combat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.heavyDamage);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
             enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
         }
     }

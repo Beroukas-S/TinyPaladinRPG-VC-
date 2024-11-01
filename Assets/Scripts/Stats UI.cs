@@ -40,7 +40,7 @@ public class StatsUI : MonoBehaviour
 
     public void UpdateStrengthStat()
     {
-        statSquares[0].GetComponentInChildren<TMP_Text>().text = "Strength: " + PlayerStats.Instance.quickDamage;
+        statSquares[0].GetComponentInChildren<TMP_Text>().text = "Strength: " + PlayerStats.Instance.meleeDamage;
     }
 
     public void UpdateSpeedStat()

@@ -334,7 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expReward: 5
   currentHP: 2
-  maxHP: 2
+  maxHP: 3
 --- !u!114 &384252844691400239
 MonoBehaviour:
   m_ObjectHideFlags: 0

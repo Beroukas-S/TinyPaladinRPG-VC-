@@ -38,6 +38,8 @@ public class ProjectileScript : MonoBehaviour
             collision.gameObject.GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.fireballDamage);
             rb.velocity = Vector2.zero;
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.position = collision.transform.position;
+            //transform.position = (collision.transform.position - transform.position).normalized;
             animator.SetBool("onHit", true);
             
         }

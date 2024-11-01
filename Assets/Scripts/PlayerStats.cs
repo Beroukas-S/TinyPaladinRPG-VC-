@@ -6,14 +6,12 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance;
     [Header("Combat Stats")]
-    public float quickDamage;
-    public float heavyDamage;
+    public float meleeDamage;
     public float weaponRange;
     public float knockBackForce;
     public float knockBackTime;
     public float knockBackStun;
-    public float quickAttackCD;
-    public float heavyAttackCD;
+    public float attackCD;
     public float fireballDamage;
     public float fireballCD;
 
