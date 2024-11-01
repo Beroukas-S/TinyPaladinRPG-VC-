@@ -10,6 +10,8 @@ public class ProjectileScript : MonoBehaviour
     public float projectileSpeed;
     public Animator animator;
 
+    private float travelDistance;
+    private Vector3 startinPosition;
 
     private void Start()
     {
@@ -24,11 +26,19 @@ public class ProjectileScript : MonoBehaviour
         Vector3 rotation = mousePos - transform.position;
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
+        startinPosition = transform.position;
+
     }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        //για να μην πετάει για πάντα
+        travelDistance = Vector3.Distance(startinPosition, transform.position);
+        if (travelDistance > 8)
+        {
+            Destroy(gameObject);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

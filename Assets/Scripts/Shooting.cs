@@ -11,6 +11,8 @@ public class Shooting : MonoBehaviour
     public Transform projectileTransform;
     private float timer;
 
+    //public GameObject projectileCreate = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
+
 
 
     // Start is called before the first frame update
@@ -35,8 +37,15 @@ public class Shooting : MonoBehaviour
 
 
         if (Input.GetButtonDown("Fireball") && timer <=0)
-        { 
-            Instantiate(projectile, projectileTransform.position, Quaternion.identity);
+        {
+            //Instantiate(projectile, projectileTransform.position, Quaternion.identity);
+
+            GameObject projectileCreate = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
+
+            //για να δώσω τιμή στο sorting layer
+            var MyScript = projectileCreate.GetComponent<SpriteRenderer>();
+            MyScript.sortingOrder = 15;
+
             timer = PlayerStats.Instance.fireballCD;
         }
 
