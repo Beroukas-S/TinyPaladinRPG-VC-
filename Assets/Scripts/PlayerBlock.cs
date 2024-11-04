@@ -9,6 +9,7 @@ public class PlayerBlock : MonoBehaviour
     public Animator animator;
 
     public PlayerHealth playerHealth;
+    public PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class PlayerBlock : MonoBehaviour
         {
             animator.SetBool("onBlock", true);
             playerHealth.ChangeState(HealthState.Immune);
-            
+            playerMovement.ChangeState(PlayerState.Blocking);
         }
     }
 

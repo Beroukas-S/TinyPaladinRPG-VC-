@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Movement : MonoBehaviour
+public class DynaGoblinMove : MonoBehaviour
 {
-    public float speed = 4;
-    public float attackRange = 2;
-    public float attackCD = 2;
-    public float playerDetectDistance = 5;
+    public float speed;
+    public float attackRange;
+    public float attackCD ;
+    public float playerDetectDistance;
     public Transform detectionPoint;
     public LayerMask playerLayer;
     public Transform enemyCanvasTransform;
 
-    private float attackCDtimer;
-    private int faceDirection = -1;
-    private EnemyState enemyState;
+    public float attackCDtimer;
+    private int faceDirection = 1;
+    public EnemyState enemyState;
 
 
     private Rigidbody2D rb;
@@ -27,15 +27,16 @@ public class Enemy_Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animat = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
 
         //always checking for cooldown
-        
+
 
         //core behaviour
 
@@ -56,12 +57,8 @@ public class Enemy_Movement : MonoBehaviour
                 rb.velocity = Vector2.zero;
             }
         }
-        //else
-        //{ 
-            
-        //}
         
-        
+
     }
 
     void Chase()
@@ -96,10 +93,15 @@ public class Enemy_Movement : MonoBehaviour
                 attackCDtimer = attackCD;
                 ChangeState(EnemyState.Attacking);
             }
+            else if ((Vector2.Distance(transform.position, player.position) > attackRange && attackCDtimer > 0))
+            {
+                ChangeState(EnemyState.Idle);
+            }
             else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Moving);
             }
+
 
 
         }
@@ -108,13 +110,6 @@ public class Enemy_Movement : MonoBehaviour
             rb.velocity = Vector2.zero;
             ChangeState(EnemyState.Idle);
         }
-    }
-
-
-
-    public void Attack()
-    {
-
     }
 
     //change animation state for the enemy
@@ -158,10 +153,11 @@ public class Enemy_Movement : MonoBehaviour
     }
 }
 
-public enum EnemyState
+public enum DynaGoblinState
 {
     Idle,
     Moving,
     Attacking,
     KnockedBack
 }
+

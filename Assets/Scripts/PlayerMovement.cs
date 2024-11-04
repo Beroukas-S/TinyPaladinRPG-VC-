@@ -200,12 +200,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButton(1) && playerState != PlayerState.Attacking && playerState != PlayerState.KnockedBack)
         {
             block.Block();
-            ChangeState(PlayerState.Blocking);
         }
         else if (Input.GetMouseButtonUp(1))
         {
-            block.BlockEnd();
-            
+            block.BlockEnd();      
         }
     }
 
