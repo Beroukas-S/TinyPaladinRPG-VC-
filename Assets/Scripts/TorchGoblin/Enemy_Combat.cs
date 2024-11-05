@@ -10,6 +10,8 @@ public class Enemy_Combat : MonoBehaviour
     public float knockBackForce;
     public float knockTime = 1;
     public LayerMask playerLayer;
+
+
     /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -19,13 +21,19 @@ public class Enemy_Combat : MonoBehaviour
         }
     }
     */
+
+
     public void Attack()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, weaponRange, playerLayer);
         if (hits.Length > 0)
         {
             hits[0].GetComponent<PlayerHealth>().ChangeHP(-damage);
-            hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockBackForce, knockTime);
+            if (PlayerStats.Instance.currentHP > 0)
+            {
+                hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockBackForce, knockTime);
+            }
+            
         }
     }
 

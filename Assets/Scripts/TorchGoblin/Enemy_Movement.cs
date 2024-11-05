@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerHealth;
 
 public class Enemy_Movement : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Enemy_Movement : MonoBehaviour
     private Transform player;
     private Animator animat;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +35,10 @@ public class Enemy_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
 
         //always checking for cooldown
-        
+
 
         //core behaviour
 
@@ -58,10 +61,12 @@ public class Enemy_Movement : MonoBehaviour
         }
         //else
         //{ 
-            
+
         //}
+
         
         
+
     }
 
     void Chase()
@@ -86,6 +91,8 @@ public class Enemy_Movement : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectDistance, playerLayer);
 
+        
+
         if (hits.Length > 0)
         {
             player = hits[0].transform;
@@ -101,6 +108,8 @@ public class Enemy_Movement : MonoBehaviour
                 ChangeState(EnemyState.Moving);
             }
         }
+
+
         else
         {
             rb.velocity = Vector2.zero;

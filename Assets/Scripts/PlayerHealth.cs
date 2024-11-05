@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
 
     public TMP_Text healthText;
     public Animator hpDamageAnim;
+    public Animator animator;
+    private PlayerMovement playermovent;
 
     public HealthState healthState;
 
@@ -15,24 +17,34 @@ public class PlayerHealth : MonoBehaviour
     {
         healthText.text = "HEALTH " + PlayerStats.Instance.currentHP + "/" + PlayerStats.Instance.maxHP;
         ChangeState(HealthState.Normal);
+        playermovent = GetComponent<PlayerMovement>();
+        PlayerStats.Instance.currentHP = PlayerStats.Instance.maxHP;
     }
 
     public void ChangeHP(int amount)
     {
         if (healthState == HealthState.Normal)
         {
-            PlayerStats.Instance.currentHP += amount;
-            hpDamageAnim.Play("Text_Damage");
-            healthText.text = "HEALTH " + PlayerStats.Instance.currentHP + "/" + PlayerStats.Instance.maxHP;
-
-            if (PlayerStats.Instance.currentHP > PlayerStats.Instance.maxHP)
+            if (PlayerStats.Instance.currentHP + amount > PlayerStats.Instance.maxHP)
             {
                 PlayerStats.Instance.currentHP = PlayerStats.Instance.maxHP;
             }
-            if (PlayerStats.Instance.currentHP <= 0)
+            else if (PlayerStats.Instance.currentHP + amount > 0)
             {
-                gameObject.SetActive(false);
+                PlayerStats.Instance.currentHP += amount;
             }
+            else if (PlayerStats.Instance.currentHP + amount <= 0)
+            {
+                PlayerStats.Instance.currentHP = 0;
+                ChangeState(HealthState.Dead);
+                playermovent.ChangeState(PlayerState.Dead);
+                playermovent.rb.velocity = Vector2.zero;
+                animator.SetTrigger("onDeath");
+            }
+
+            hpDamageAnim.Play("Text_Damage");
+            healthText.text = "HEALTH " + PlayerStats.Instance.currentHP + "/" + PlayerStats.Instance.maxHP;
+
         }
 
     }
@@ -43,12 +55,21 @@ public class PlayerHealth : MonoBehaviour
         healthState = newState;
     }
 
-    
+    public void PlayerDeath()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
+    }
+
+    public enum HealthState
+    {
+        Normal,
+        Immune,
+        Vulnerable,
+        Dead
+    }
+
+
 
 }
-public enum HealthState
-{
-    Normal,
-    Immune,
-    Vulnerable,
-}
+

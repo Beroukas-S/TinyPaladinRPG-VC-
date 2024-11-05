@@ -6,12 +6,20 @@ using UnityEngine;
 public class Dynamite : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float dynamiteSpeed;
     public Animator animator;
     public Transform player;
+
     private Vector3 startingPlayerPosition;
+    public LayerMask playerLayer;
+
     private float playerDistance;
-    public float timer = 2;
+    public float dynamiteSpeed;
+    public float timer;
+    public int damage;
+    public float knockBackForce;
+    public float knockTime;
+    public float explosionRange;
+
 
 
     // Start is called before the first frame update
@@ -53,9 +61,30 @@ public class Dynamite : MonoBehaviour
     }
 
     
-
     public void DestroyDynamite()
     { 
         Destroy(gameObject);
     }
+
+    public void Damage()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRange, playerLayer);
+        if (hits.Length > 0)
+        {
+            hits[0].GetComponent<PlayerHealth>().ChangeHP(-damage);
+            if (PlayerStats.Instance.currentHP > 0)
+            {
+                hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockBackForce, knockTime);
+            }
+
+        }
+    }
+
+    /*
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRange);
+    }
+    */
 }

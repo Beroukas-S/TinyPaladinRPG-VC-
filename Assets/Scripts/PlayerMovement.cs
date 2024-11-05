@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     // fixedUpdate is called 50 per second
     void FixedUpdate()
     {
-        if (isKnocked == false) 
+        if (isKnocked == false && playerState != PlayerState.Dead) 
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -221,4 +221,5 @@ public enum PlayerState
     KnockedBack,
     Attacking,
     Blocking,
+    Dead
 }

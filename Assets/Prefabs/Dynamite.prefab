@@ -183,7 +183,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e2457bb9dc8d345b0b0f0ff82e9ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dynamiteSpeed: 10
   animator: {fileID: 6111749154332222218}
   player: {fileID: 0}
-  timer: 1.5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  dynamiteSpeed: 15
+  timer: 1
+  damage: 4
+  knockBackForce: 20
+  knockTime: 0.02
+  explosionRange: 1

@@ -31,7 +31,7 @@ public class PlayerBlock : MonoBehaviour
         if (timer <= 0)
         {
             animator.SetBool("onBlock", true);
-            playerHealth.ChangeState(HealthState.Immune);
+            playerHealth.ChangeState(PlayerHealth.HealthState.Immune);
             playerMovement.ChangeState(PlayerState.Blocking);
         }
     }
@@ -39,7 +39,7 @@ public class PlayerBlock : MonoBehaviour
     public void BlockEnd()
     {
         animator.SetBool("onBlock", false);
-        playerHealth.ChangeState(HealthState.Normal);
+        playerHealth.ChangeState(PlayerHealth.HealthState.Normal);
         timer = PlayerStats.Instance.blockCD;
     }
 

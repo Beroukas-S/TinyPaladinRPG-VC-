@@ -29,6 +29,15 @@ public class PlayerStats : MonoBehaviour
             Instance = this;
         else 
             Destroy(gameObject);
+        currentHP = maxHP;
+    }
+
+    private void Update()
+    {
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+        }
     }
 
 }
