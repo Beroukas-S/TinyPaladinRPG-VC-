@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static PlayerHealth;
 
@@ -9,6 +10,8 @@ public class Enemy_Movement : MonoBehaviour
     public float attackRange = 2;
     public float attackCD = 2;
     public float playerDetectDistance = 5;
+    public float wanderTime = 30;
+    public float waitTime = 10;
     public Transform detectionPoint;
     public LayerMask playerLayer;
     public Transform enemyCanvasTransform;
@@ -16,11 +19,14 @@ public class Enemy_Movement : MonoBehaviour
     private float attackCDtimer;
     private int faceDirection = -1;
     private EnemyState enemyState;
+    private float timer=0;
 
 
     private Rigidbody2D rb;
     private Transform player;
     private Animator animat;
+
+
 
 
 
@@ -42,7 +48,7 @@ public class Enemy_Movement : MonoBehaviour
 
         //core behaviour
 
-        if (enemyState != EnemyState.KnockedBack)
+        if (enemyState != EnemyState.KnockedBack && enemyState != EnemyState.Wandering)
         {
             if (attackCDtimer > 0)
             {
@@ -57,6 +63,17 @@ public class Enemy_Movement : MonoBehaviour
             {
                 //attack
                 rb.velocity = Vector2.zero;
+            }
+            else if (enemyState == EnemyState.Idle)
+            {
+                if (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                }
+                else
+                {
+                    Wander();
+                }
             }
         }
         //else
@@ -134,6 +151,10 @@ public class Enemy_Movement : MonoBehaviour
         {
             animat.SetBool("isAttacking", false);
         }
+        else if (enemyState == EnemyState.Wandering)
+        {
+            animat.SetBool("isMoving", false);
+        }
 
         enemyState = newState;
 
@@ -149,6 +170,10 @@ public class Enemy_Movement : MonoBehaviour
         {
             animat.SetBool("isAttacking", true);
         }
+        else if (enemyState == EnemyState.Wandering)
+        {
+            animat.SetBool("isMoving", true);
+        }
     }
 
 
@@ -158,6 +183,31 @@ public class Enemy_Movement : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(detectionPoint.position, playerDetectDistance);
     }
+
+
+    private void Wander()
+    {
+        ChangeState(EnemyState.Wandering);
+        Vector3 randPosition = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 1f);//.normalized;
+        Vector2 randDirection = (randPosition - transform.position).normalized;
+
+        rb.velocity = randDirection * (speed/2);
+        timer = waitTime;
+        StartCoroutine(WanderTimer(wanderTime));
+
+    }
+    
+    IEnumerator WanderTimer(float movetime)
+    {
+        yield return new WaitForSeconds(movetime);
+        rb.velocity = Vector2.zero;
+        ChangeState(EnemyState.Idle);
+    }
+    
+
+
+
+
 }
 
 public enum EnemyState
@@ -165,5 +215,6 @@ public enum EnemyState
     Idle,
     Moving,
     Attacking,
-    KnockedBack
+    KnockedBack,
+    Wandering
 }

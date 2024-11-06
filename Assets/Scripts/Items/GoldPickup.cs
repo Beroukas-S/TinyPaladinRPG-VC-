@@ -13,7 +13,7 @@ public class PickupGold : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //OnGoldPickup(goldAmmount);
+        OnGoldPickup(goldAmmount);
         Destroy(gameObject);
     }
 }

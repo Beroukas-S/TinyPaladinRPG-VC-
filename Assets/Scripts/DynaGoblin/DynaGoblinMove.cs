@@ -11,8 +11,11 @@ public class DynaGoblinMove : MonoBehaviour
     public Transform detectionPoint;
     public LayerMask playerLayer;
     public Transform enemyCanvasTransform;
+    public float wanderTime;
+    public float waitTime;
+    private float timer;
 
-    public float attackCDtimer;
+    private float attackCDtimer;
     private int faceDirection = 1;
     public EnemyState enemyState;
 
@@ -40,7 +43,7 @@ public class DynaGoblinMove : MonoBehaviour
 
         //core behaviour
 
-        if (enemyState != EnemyState.KnockedBack)
+        if (enemyState != EnemyState.KnockedBack && enemyState != EnemyState.Wandering)
         {
             if (attackCDtimer > 0)
             {
@@ -55,6 +58,17 @@ public class DynaGoblinMove : MonoBehaviour
             {
                 //attack
                 rb.velocity = Vector2.zero;
+            }
+            else if (enemyState == EnemyState.Idle)
+            {
+                if (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                }
+                else
+                {
+                    Wander();
+                }
             }
         }
         
@@ -127,6 +141,10 @@ public class DynaGoblinMove : MonoBehaviour
         {
             animat.SetBool("isAttacking", false);
         }
+        else if (enemyState == EnemyState.Wandering)
+        {
+            animat.SetBool("isMoving", false);
+        }
 
         enemyState = newState;
 
@@ -142,6 +160,10 @@ public class DynaGoblinMove : MonoBehaviour
         {
             animat.SetBool("isAttacking", true);
         }
+        else if (enemyState == EnemyState.Wandering)
+        {
+            animat.SetBool("isMoving", true);
+        }
     }
 
 
@@ -151,6 +173,28 @@ public class DynaGoblinMove : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(detectionPoint.position, playerDetectDistance);
     }
+
+
+    private void Wander()
+    {
+        ChangeState(EnemyState.Wandering);
+        Vector3 randPosition = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 1f);//.normalized;
+        Vector2 randDirection = (randPosition - transform.position).normalized;
+
+        rb.velocity = randDirection * (speed / 2);
+        timer = waitTime;
+        StartCoroutine(WanderTimer(wanderTime));
+
+    }
+
+    IEnumerator WanderTimer(float movetime)
+    {
+        yield return new WaitForSeconds(movetime);
+        rb.velocity = Vector2.zero;
+        ChangeState(EnemyState.Idle);
+    }
+
+
 }
 
 public enum DynaGoblinState
@@ -158,6 +202,7 @@ public enum DynaGoblinState
     Idle,
     Moving,
     Attacking,
-    KnockedBack
+    KnockedBack,
+    Wandering
 }
 
