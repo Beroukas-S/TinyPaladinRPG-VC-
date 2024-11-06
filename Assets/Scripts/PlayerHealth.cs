@@ -15,13 +15,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void Start()
     {
-        healthText.text = "HEALTH " + PlayerStats.Instance.currentHP + "/" + PlayerStats.Instance.maxHP;
+        UpdateCanvas();
         ChangeState(HealthState.Normal);
         playermovent = GetComponent<PlayerMovement>();
         PlayerStats.Instance.currentHP = PlayerStats.Instance.maxHP;
     }
 
-    public void ChangeHP(int amount)
+    public void ChangeHP(float amount)
     {
         if (healthState == HealthState.Normal)
         {
@@ -43,10 +43,15 @@ public class PlayerHealth : MonoBehaviour
             }
 
             hpDamageAnim.Play("Text_Damage");
-            healthText.text = "HEALTH " + PlayerStats.Instance.currentHP + "/" + PlayerStats.Instance.maxHP;
+            UpdateCanvas();
 
         }
 
+    }
+
+    public void UpdateCanvas()
+    {
+        healthText.text = "HEALTH " + PlayerStats.Instance.currentHP + "/" + PlayerStats.Instance.maxHP;
     }
 
 

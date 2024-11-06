@@ -15,6 +15,9 @@ public class ExpManager : MonoBehaviour
     //public Animator levelAnim;
     public GameObject playerEffects;
 
+    public delegate void LevelUpEvent(int level);
+    public static event LevelUpEvent OnLevelUp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +58,7 @@ public class ExpManager : MonoBehaviour
         currentExp -= expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * expGrowth);
         playerEffects.GetComponent<Animator>().SetBool("onLvlUp", true);
+        OnLevelUp(level);
     }
 
 

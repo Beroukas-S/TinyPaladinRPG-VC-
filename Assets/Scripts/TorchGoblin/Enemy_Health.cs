@@ -13,9 +13,13 @@ public class Enemy_Health : MonoBehaviour
 
     private EnemyHealthbar healthbar;
 
+    public GameObject gold;
+    public SpriteRenderer enemyRenderer;
+
     private void Awake()
     {
         healthbar = GetComponentInChildren<EnemyHealthbar>();
+        enemyRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -38,6 +42,15 @@ public class Enemy_Health : MonoBehaviour
         {
             OnEnemyDefeated(expReward);
             Destroy(gameObject);
+
+            //spawn Gold
+            GameObject goldDrop = Instantiate(gold, transform.position, Quaternion.identity);
+
+            //για να δώσω τιμή στο sorting layer
+            var goldSprite = goldDrop.GetComponent<SpriteRenderer>();
+            goldSprite.sortingOrder = enemyRenderer.sortingOrder;
+
+
         }
     }
 

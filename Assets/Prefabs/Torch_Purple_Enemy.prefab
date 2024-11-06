@@ -335,6 +335,8 @@ MonoBehaviour:
   expReward: 5
   currentHP: 2
   maxHP: 3
+  gold: {fileID: 9176913866937988657, guid: 01dea08831d8f4a44b6d32483b081952, type: 3}
+  enemyRenderer: {fileID: 5683954434041719076}
 --- !u!114 &384252844691400239
 MonoBehaviour:
   m_ObjectHideFlags: 0

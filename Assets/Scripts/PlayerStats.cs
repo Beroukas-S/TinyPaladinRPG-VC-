@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public PlayerHealth playerhealth;
     public static PlayerStats Instance;
     [Header("Combat Stats")]
     public float meleeDamage;
@@ -15,13 +16,14 @@ public class PlayerStats : MonoBehaviour
     public float fireballDamage;
     public float fireballCD;
     public float blockCD;
+    public float statScaling;
 
     [Header("Health")]
-    public int currentHP;
-    public int maxHP;
+    public float currentHP;
+    public float maxHP;
 
     [Header("Movement")]
-    public int speed;
+    public float speed;
 
     private void Awake()
     {
@@ -39,5 +41,24 @@ public class PlayerStats : MonoBehaviour
             currentHP = 0;
         }
     }
+
+    private void OnEnable()
+    {
+        ExpManager.OnLevelUp += UpdateStats;
+    }
+
+    private void OnDisable()
+    {
+        ExpManager.OnLevelUp -= UpdateStats;
+    }
+
+    private void UpdateStats(int level)
+    {
+        meleeDamage += meleeDamage * level * statScaling;
+        fireballDamage += fireballDamage * level * statScaling;
+        maxHP += Mathf.RoundToInt(maxHP * level * statScaling);
+        playerhealth.UpdateCanvas();
+    }
+
 
 }

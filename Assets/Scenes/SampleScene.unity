@@ -117507,6 +117507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8590058842367d043ab9dfe486cdb2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
 --- !u!1 &1537907694
 GameObject:
   m_ObjectHideFlags: 0
@@ -118151,6 +118152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8590058842367d043ab9dfe486cdb2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
 --- !u!114 &1789495756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118320,6 +118322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f984c0ab58bc9458e89a03a5523522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerhealth: {fileID: 1789495754}
   meleeDamage: 1
   weaponRange: 0.7
   knockBackForce: 20
@@ -118329,6 +118332,7 @@ MonoBehaviour:
   fireballDamage: 2
   fireballCD: 0.5
   blockCD: 1.5
+  statScaling: 0.1
   currentHP: 0
   maxHP: 30
   speed: 5
