@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 10
   animator: {fileID: 8218802929188552328}
+  travelDistanceLimit: 10
 --- !u!50 &3385468504488617053
 Rigidbody2D:
   serializedVersion: 4

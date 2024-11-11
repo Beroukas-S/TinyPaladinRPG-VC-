@@ -16,7 +16,7 @@ public class DynaGoblinMove : MonoBehaviour
     private float timer;
 
     private float attackCDtimer;
-    private int faceDirection = 1;
+    private float faceDirection;
     public EnemyState enemyState;
 
 
@@ -30,6 +30,7 @@ public class DynaGoblinMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animat = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
+        faceDirection = transform.localScale.x;
 
     }
 
@@ -77,7 +78,7 @@ public class DynaGoblinMove : MonoBehaviour
 
     void Chase()
     {
-        if (player.position.x > transform.position.x && faceDirection == -1 || player.position.x < transform.position.x && faceDirection == 1)
+        if (player.position.x > transform.position.x && faceDirection < 0 || player.position.x < transform.position.x && faceDirection > 0)
         {
             Flip();
         }

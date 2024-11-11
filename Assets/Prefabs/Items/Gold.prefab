@@ -155,4 +155,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0e9856004acca4cb8cddddb27e35c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmmount: 5
+  gold: {fileID: 9176913866937988657}
+  enemyRenderer: {fileID: 5510714942901393867}

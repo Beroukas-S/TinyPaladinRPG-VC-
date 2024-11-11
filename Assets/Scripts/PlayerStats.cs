@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public PlayerHealth playerhealth;
     public static PlayerStats Instance;
+    private float diff;
     [Header("Combat Stats")]
     public float meleeDamage;
     public float weaponRange;
@@ -56,7 +57,10 @@ public class PlayerStats : MonoBehaviour
     {
         meleeDamage += meleeDamage * level * statScaling;
         fireballDamage += fireballDamage * level * statScaling;
+        diff = maxHP;
         maxHP += Mathf.RoundToInt(maxHP * level * statScaling);
+        diff = maxHP - diff;
+        currentHP += diff;
         playerhealth.UpdateCanvas();
     }
 

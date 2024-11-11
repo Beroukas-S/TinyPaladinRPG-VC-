@@ -17,7 +17,7 @@ public class Enemy_Movement : MonoBehaviour
     public Transform enemyCanvasTransform;
 
     private float attackCDtimer;
-    private int faceDirection = -1;
+    private float faceDirection;
     private EnemyState enemyState;
     private float timer=0;
 
@@ -36,6 +36,7 @@ public class Enemy_Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animat = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
+        faceDirection = transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -88,7 +89,7 @@ public class Enemy_Movement : MonoBehaviour
 
     void Chase()
     {
-        if (player.position.x > transform.position.x && faceDirection == -1 || player.position.x < transform.position.x && faceDirection == 1)
+        if (player.position.x > transform.position.x && faceDirection < 0 || player.position.x < transform.position.x && faceDirection > 0)
         {
             Flip();
         }

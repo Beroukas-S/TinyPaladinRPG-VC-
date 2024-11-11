@@ -41,7 +41,7 @@ public class Enemy_Health : MonoBehaviour
         if (currentHP <= 0)
         {
             OnEnemyDefeated(expReward);
-            Destroy(gameObject);
+            
 
             //spawn Gold
             GameObject goldDrop = Instantiate(gold, transform.position, Quaternion.identity);
@@ -50,6 +50,7 @@ public class Enemy_Health : MonoBehaviour
             var goldSprite = goldDrop.GetComponent<SpriteRenderer>();
             goldSprite.sortingOrder = enemyRenderer.sortingOrder;
 
+            Destroy(gameObject);
 
         }
     }

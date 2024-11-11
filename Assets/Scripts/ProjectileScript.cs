@@ -10,8 +10,11 @@ public class ProjectileScript : MonoBehaviour
     public float projectileSpeed;
     public Animator animator;
 
+    public float travelDistanceLimit;
+
     private float travelDistance;
     private Vector3 startinPosition;
+
 
     private void Start()
     {
@@ -34,7 +37,7 @@ public class ProjectileScript : MonoBehaviour
     {
         //για να μην πετάει για πάντα
         travelDistance = Vector3.Distance(startinPosition, transform.position);
-        if (travelDistance > 8)
+        if (travelDistance > travelDistanceLimit)
         {
             Destroy(gameObject);
         }

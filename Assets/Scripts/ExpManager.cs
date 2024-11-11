@@ -26,10 +26,10 @@ public class ExpManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Test"))
-        {
-            GainExp(5);
-        }
+        //if (Input.GetButtonDown("Test"))
+        //{
+        //    GainExp(5);
+        //}
     }
 
     private void OnEnable()
