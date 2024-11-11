@@ -69,9 +69,10 @@ public class PlayerStats : MonoBehaviour
         playerhealth.UpdateCanvas();
     }
 
-    private void GoldUpdate(float amount)
+    public void GoldUpdate(float amount)
     { 
         gold += amount;
+        playerhealth.UpdateCanvas();
     }
 
 
