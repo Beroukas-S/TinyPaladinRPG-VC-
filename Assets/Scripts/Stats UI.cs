@@ -53,12 +53,17 @@ public class StatsUI : MonoBehaviour
         statSquares[2].GetComponentInChildren<TMP_Text>().text = "Health: " + PlayerStats.Instance.maxHP;
     }
 
+    public void UpdateGoldStat()
+    {
+        statSquares[3].GetComponentInChildren<TMP_Text>().text = "Gold: " + PlayerStats.Instance.gold;
+    }
 
     public void UpdateStats()
     {
         UpdateStrengthStat();
         UpdateSpeedStat();
         UpdateHealthStat();
+        UpdateGoldStat();
     }
 
 }

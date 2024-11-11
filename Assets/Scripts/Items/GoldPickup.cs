@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PickupGold : MonoBehaviour
 {
-    //public int goldAmmount = 5;
-    //public delegate void GoldPickup(int gold);
-    //public static event GoldPickup OnGoldPickup;
+    public float goldAmmount = 5;
+    public delegate void GoldPickup(float gold);
+    public static event GoldPickup OnGoldPickup;
     private float timer;
 
 
@@ -26,12 +26,13 @@ public class PickupGold : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //OnGoldPickup(goldAmmount);
+        
         if (collision.gameObject.tag == "Player")
         {
             if (timer <= 0)
             {
                 Destroy(gameObject);
+                OnGoldPickup(goldAmmount);
             }
         }
     }

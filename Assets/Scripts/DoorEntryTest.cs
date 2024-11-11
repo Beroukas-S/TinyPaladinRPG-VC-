@@ -20,7 +20,7 @@ public class DoorEntryTest : MonoBehaviour
 
     void Update()
     {
-        //placeholder interact button
+        
         if (Input.GetButtonDown("E") && inRange)
         {
             BuildingEnter();

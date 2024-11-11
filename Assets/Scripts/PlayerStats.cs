@@ -26,6 +26,9 @@ public class PlayerStats : MonoBehaviour
     [Header("Movement")]
     public float speed;
 
+    [Header("Gold")]
+    public float gold;
+
     private void Awake()
     {
         if (Instance == null)
@@ -46,11 +49,13 @@ public class PlayerStats : MonoBehaviour
     private void OnEnable()
     {
         ExpManager.OnLevelUp += UpdateStats;
+        PickupGold.OnGoldPickup += GoldUpdate;
     }
 
     private void OnDisable()
     {
         ExpManager.OnLevelUp -= UpdateStats;
+        PickupGold.OnGoldPickup -= GoldUpdate;
     }
 
     private void UpdateStats(int level)
@@ -62,6 +67,11 @@ public class PlayerStats : MonoBehaviour
         diff = maxHP - diff;
         currentHP += diff;
         playerhealth.UpdateCanvas();
+    }
+
+    private void GoldUpdate(float amount)
+    { 
+        gold += amount;
     }
 
 
