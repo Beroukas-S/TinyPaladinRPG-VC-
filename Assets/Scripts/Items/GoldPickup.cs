@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class PickupGold : MonoBehaviour
 {
-    public float goldAmmount = 5;
+    public float goldAmmount;
     public delegate void GoldPickup(float gold);
     public static event GoldPickup OnGoldPickup;
     private float timer;
+    public float range1 = 91;
+    public float range2 = 66;
 
 
     private void Start()
@@ -32,8 +34,25 @@ public class PickupGold : MonoBehaviour
             if (timer <= 0)
             {
                 Destroy(gameObject);
+                GoldAmount();
                 OnGoldPickup(goldAmmount);
             }
+        }
+    }
+
+    private void GoldAmount()
+    {
+        if (Random.Range(0f, 100f) >= range1)
+        {
+            goldAmmount = 10;
+        }
+        else if (Random.Range(0f, 1f) >= range2)
+        {
+            goldAmmount = 5;
+        }
+        else
+        {
+            goldAmmount = 2;
         }
     }
 }

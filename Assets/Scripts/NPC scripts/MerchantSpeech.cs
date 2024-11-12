@@ -47,7 +47,7 @@ public class MerchantSpeech : MonoBehaviour
     {
         if (bubbleOn)
         {
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
             shopCanvas.alpha = 0;
             shopCanvas.interactable = false;
             shopCanvas.blocksRaycasts = false;
@@ -55,7 +55,7 @@ public class MerchantSpeech : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             //UpdateStats();
             shopCanvas.alpha = 1;
             shopCanvas.interactable = true;

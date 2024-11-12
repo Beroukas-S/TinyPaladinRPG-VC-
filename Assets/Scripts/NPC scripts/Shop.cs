@@ -9,7 +9,10 @@ public class Shop : MonoBehaviour
 {
     public PlayerStats playerStats;
     public Button button;
+    public float timer;
+    public CanvasGroup canvasGroup;
 
+    
 
     // Start is called before the first frame update
     public void BuySpell()
@@ -19,8 +22,21 @@ public class Shop : MonoBehaviour
             playerStats.GoldUpdate(-50);
             button.interactable = false;
             button.gameObject.SetActive(false);
+        }
+        else if (PlayerStats.Instance.gold < 50)
+        {
+            canvasGroup.alpha = 1;
+            StartCoroutine(InsufficientPopUp(timer));
 
 
         }
     }
+    
+    IEnumerator InsufficientPopUp(float time)
+    {
+        yield return new WaitForSeconds(time);
+        canvasGroup.alpha = 0;
+    }
+
+
 }
