@@ -1485,7 +1485,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 6
-      m_TileSpriteIndex: 12
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1495,7 +1495,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 19
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1505,7 +1505,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 8
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 12
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3414,10 +3414,10 @@ Tilemap:
     m_Data: {fileID: -1497030778, guid: 661153c88aac7de4b9ac82ef621d9060, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 1056124750, guid: 94d77f81f0bbc5246a960547c5d5842b, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -2050729161, guid: 94d77f81f0bbc5246a960547c5d5842b, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 9
     m_Data: {fileID: 21300000, guid: cbd8e704f4f9f68409b80b1a9081de4f, type: 3}
   - m_RefCount: 9
@@ -3425,7 +3425,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -855796938, guid: 661153c88aac7de4b9ac82ef621d9060, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 524412451, guid: 94d77f81f0bbc5246a960547c5d5842b, type: 3}
+    m_Data: {fileID: -2050729161, guid: 94d77f81f0bbc5246a960547c5d5842b, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -360772209, guid: 661153c88aac7de4b9ac82ef621d9060, type: 3}
   - m_RefCount: 2
@@ -3438,10 +3438,10 @@ Tilemap:
     m_Data: {fileID: 1186558104, guid: 661153c88aac7de4b9ac82ef621d9060, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -1175295327, guid: 661153c88aac7de4b9ac82ef621d9060, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1056124750, guid: 94d77f81f0bbc5246a960547c5d5842b, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 524412451, guid: 94d77f81f0bbc5246a960547c5d5842b, type: 3}
   - m_RefCount: 13
     m_Data: {fileID: 21300000, guid: 2a68a29d7cc680d4bbb501159e3f6ba2, type: 3}
   - m_RefCount: 4
@@ -4109,7 +4109,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -44953,7 +44953,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1789495751}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5.5
+    OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -46418,8 +46418,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
-  m_LookaheadTime: 0.509
-  m_LookaheadSmoothing: 6.1
+  m_LookaheadTime: 0
+  m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
   m_YDamping: 1

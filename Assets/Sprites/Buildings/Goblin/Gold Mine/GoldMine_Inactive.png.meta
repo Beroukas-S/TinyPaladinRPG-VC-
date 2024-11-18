@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d2d3c2c48cd6edd47822e842725d38d4
+guid: 373cc4b1e5a58ce49b33ae3c1e3c4aae
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,133 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bridge_All_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8095bc54c928314bb6f0a6ffbde2dcd
-      internalID: 564555701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bridge_All_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1520395486770254693ce30338784062
-      internalID: -902737864
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bridge_All_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 192
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9675191b4dc22244db4115c15c4b610d
-      internalID: -1008203595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bridge_All_3
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1191f49afb655c34aa5a8a3f1dc750ce
-      internalID: 1641561153
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bridge_All_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a240a70853441cd4995a6010bb2da40b
-      internalID: 1611881521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bridge_All_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7982a9ef20bd23e44bb10cc7f6f7a0dc
-      internalID: 833374530
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bridge_All_6
+      name: GoldMine_Inactive_0
       rect:
         serializedVersion: 2
         x: 0
@@ -250,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e24e17dbbf987142854a2856650aa7f
-      internalID: -994944798
+      spriteID: cfe9b602d843a6e429f3ea8734158d78
+      internalID: 404351760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_All_7
+      name: GoldMine_Inactive_1
       rect:
         serializedVersion: 2
         x: 64
@@ -271,14 +145,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 946c093754ee9e44db3e8f4afb7ce3a0
-      internalID: -1868616042
+      spriteID: da248b53b92aad541920a26da7e8d814
+      internalID: -209824763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_All_8
+      name: GoldMine_Inactive_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 572601d1c4574034c91a6443691426df
+      internalID: -330406569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoldMine_Inactive_3
       rect:
         serializedVersion: 2
         x: 0
@@ -292,14 +187,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83bbbe75f944a13419bade0c94c29099
-      internalID: -251618741
+      spriteID: c58f3da1f3b230943a3c802691a15262
+      internalID: -1920426147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bridge_All_9
+      name: GoldMine_Inactive_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e5396051d9ad1445b199e7d19d62afd
+      internalID: 324787641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GoldMine_Inactive_5
       rect:
         serializedVersion: 2
         x: 128
@@ -313,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5544c4493f0b21c4aa052c276ef10df5
-      internalID: -463522762
+      spriteID: e39362a558143254aa8e3b1ef039f5d0
+      internalID: 1713222150
       vertices: []
       indices: 
       edges: []
@@ -330,16 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bridge_All_0: 564555701
-      Bridge_All_1: -902737864
-      Bridge_All_2: -1008203595
-      Bridge_All_3: 1641561153
-      Bridge_All_4: 1611881521
-      Bridge_All_5: 833374530
-      Bridge_All_6: -994944798
-      Bridge_All_7: -1868616042
-      Bridge_All_8: -251618741
-      Bridge_All_9: -463522762
+      GoldMine_Inactive_0: 404351760
+      GoldMine_Inactive_1: -209824763
+      GoldMine_Inactive_2: -330406569
+      GoldMine_Inactive_3: -1920426147
+      GoldMine_Inactive_4: 324787641
+      GoldMine_Inactive_5: 1713222150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
