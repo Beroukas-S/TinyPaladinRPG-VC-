@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     public GameObject projectile;
     public Transform projectileTransform;
     private float timer;
+    private bool hasSpell;
 
     //public GameObject projectileCreate = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
@@ -24,6 +25,7 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Aim (moving the shooting transform)
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         Vector3 rotation = mousePos - transform.position;
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
@@ -35,18 +37,22 @@ public class Shooting : MonoBehaviour
             timer -= Time.deltaTime;
         }
 
+        hasSpell = PlayerStats.Instance.fireball;
 
+        //shoot
         if (Input.GetButtonDown("Fireball") && timer <=0)
         {
             //Instantiate(projectile, projectileTransform.position, Quaternion.identity);
+            if (hasSpell == true)
+            {
+                GameObject projectileCreate = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
 
-            GameObject projectileCreate = Instantiate(projectile, projectileTransform.position, Quaternion.identity);
+                //για να δώσω τιμή στο sorting layer
+                var MyScript = projectileCreate.GetComponent<SpriteRenderer>();
+                MyScript.sortingOrder = 15;
 
-            //για να δώσω τιμή στο sorting layer
-            var MyScript = projectileCreate.GetComponent<SpriteRenderer>();
-            MyScript.sortingOrder = 15;
-
-            timer = PlayerStats.Instance.fireballCD;
+                timer = PlayerStats.Instance.fireballCD;
+            }
         }
 
 

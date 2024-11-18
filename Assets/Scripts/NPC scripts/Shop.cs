@@ -11,7 +11,6 @@ public class Shop : MonoBehaviour
     public Button button;
     public float timer;
     public CanvasGroup canvasGroup;
-
     
 
     // Start is called before the first frame update
@@ -22,6 +21,8 @@ public class Shop : MonoBehaviour
             playerStats.GoldUpdate(-50);
             button.interactable = false;
             button.gameObject.SetActive(false);
+            playerStats.BuyFireball();
+            //PlayerSkills.Instance.fireball = true;
         }
         else if (PlayerStats.Instance.gold < 50)
         {

@@ -29,6 +29,9 @@ public class PlayerStats : MonoBehaviour
     [Header("Gold")]
     public float gold;
 
+    [Header ("Skills")]
+    public bool fireball;
+
     private void Awake()
     {
         if (Instance == null)
@@ -36,6 +39,7 @@ public class PlayerStats : MonoBehaviour
         else 
             Destroy(gameObject);
         currentHP = maxHP;
+        fireball = false;
     }
 
     private void Update()
@@ -73,6 +77,11 @@ public class PlayerStats : MonoBehaviour
     { 
         gold += amount;
         playerhealth.UpdateCanvas();
+    }
+
+    public void BuyFireball()
+    {
+        fireball = true;
     }
 
 

@@ -18,6 +18,7 @@ public class ProjectileScript : MonoBehaviour
 
     private void Start()
     {
+        //transform position is the position of the object in shooting script
         animator.SetBool("onHit", false);
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
@@ -26,6 +27,7 @@ public class ProjectileScript : MonoBehaviour
         Vector3 direction = mousePos - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * projectileSpeed;
 
+        //correct fireball rotation based on aim
         Vector3 rotation = mousePos - transform.position;
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot);
@@ -66,6 +68,7 @@ public class ProjectileScript : MonoBehaviour
         */
     }
 
+    //called at the end of explosion animation
     public void DestroyFireball()
     {
         Destroy(gameObject);
