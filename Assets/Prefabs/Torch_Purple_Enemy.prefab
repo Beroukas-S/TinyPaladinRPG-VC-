@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 5384754716061919689}
   - component: {fileID: 5292378439848364257}
   - component: {fileID: 384252844691400239}
+  - component: {fileID: 513250769354022983}
   m_Layer: 8
   m_Name: Torch_Purple_Enemy
   m_TagString: Enemy
@@ -294,7 +295,7 @@ MonoBehaviour:
   damage: 1
   attackPoint: {fileID: 357906742580848166}
   weaponRange: 2
-  knockBackForce: 20
+  knockBackForce: 10
   knockTime: 0.3
   playerLayer:
     serializedVersion: 2
@@ -315,8 +316,8 @@ MonoBehaviour:
   attackRange: 1.2
   attackCD: 1.5
   playerDetectDistance: 4
-  wanderTime: 30
-  waitTime: 10
+  wanderTime: 0.5
+  waitTime: 2
   detectionPoint: {fileID: 46604248878160629}
   playerLayer:
     serializedVersion: 2
@@ -351,6 +352,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48fa915b42d7c747b35f017c77a0f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &513250769354022983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668554588066875776}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81956bc056d3395429cef84bcd519948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  attackRange: 1.2
+  attackCD: 1.5
+  playerDetectDistance: 4
+  detectionPoint: {fileID: 46604248878160629}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  enemyCanvasTransform: {fileID: 6888618049539493674}
+  wanderTime: 0.5
+  waitTime: 2
+  enemyState: 0
 --- !u!1 &2088088894107611853
 GameObject:
   m_ObjectHideFlags: 0

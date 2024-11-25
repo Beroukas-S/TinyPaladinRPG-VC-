@@ -403,6 +403,7 @@ GameObject:
   - component: {fileID: 4182611802735605807}
   - component: {fileID: 303466101698560240}
   - component: {fileID: 3425769521901107940}
+  - component: {fileID: 2264925819086289202}
   m_Layer: 8
   m_Name: Dynamite_Purple_Enemy
   m_TagString: Enemy
@@ -570,7 +571,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6214810114432773140}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81956bc056d3395429cef84bcd519948, type: 3}
   m_Name: 
@@ -584,8 +585,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   enemyCanvasTransform: {fileID: 6853160049107159161}
-  wanderTime: 0
-  waitTime: 0
+  wanderTime: 0.5
+  waitTime: 2
   enemyState: 0
 --- !u!114 &4182611802735605807
 MonoBehaviour:
@@ -634,6 +635,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c48fa915b42d7c747b35f017c77a0f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2264925819086289202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6214810114432773140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 691059af78233c444a098e0e4028ce0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  attackRange: 4
+  attackCD: 3
+  playerDetectDistance: 5
+  wanderTime: 0.5
+  waitTime: 2
+  detectionPoint: {fileID: 2465352879865560729}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  enemyCanvasTransform: {fileID: 6853160049107159161}
 --- !u!1 &7790528603475349455
 GameObject:
   m_ObjectHideFlags: 0

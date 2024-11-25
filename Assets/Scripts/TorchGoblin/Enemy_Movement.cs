@@ -6,12 +6,12 @@ using static PlayerHealth;
 
 public class Enemy_Movement : MonoBehaviour
 {
-    public float speed = 4;
-    public float attackRange = 2;
-    public float attackCD = 2;
-    public float playerDetectDistance = 5;
-    public float wanderTime = 30;
-    public float waitTime = 10;
+    public float speed;
+    public float attackRange;
+    public float attackCD;
+    public float playerDetectDistance;
+    public float wanderTime;
+    public float waitTime;
     public Transform detectionPoint;
     public LayerMask playerLayer;
     public Transform enemyCanvasTransform;
@@ -19,7 +19,7 @@ public class Enemy_Movement : MonoBehaviour
     private float attackCDtimer;
     private float faceDirection;
     private EnemyState enemyState;
-    private float timer=0;
+    private float timer;
 
 
     private Rigidbody2D rb;
@@ -42,7 +42,16 @@ public class Enemy_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //so as not to be pushed around by colliding with him
+        if (enemyState == EnemyState.Idle)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
 
+        }
+        else
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        }
 
         //always checking for cooldown
 
@@ -77,14 +86,6 @@ public class Enemy_Movement : MonoBehaviour
                 }
             }
         }
-        //else
-        //{ 
-
-        //}
-
-        
-        
-
     }
 
     void Chase()
@@ -109,8 +110,6 @@ public class Enemy_Movement : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectDistance, playerLayer);
 
-        
-
         if (hits.Length > 0)
         {
             player = hits[0].transform;
@@ -121,12 +120,15 @@ public class Enemy_Movement : MonoBehaviour
                 attackCDtimer = attackCD;
                 ChangeState(EnemyState.Attacking);
             }
+            else if ((Vector2.Distance(transform.position, player.position) > attackRange && attackCDtimer > 0))
+            {
+                ChangeState(EnemyState.Idle);
+            }
             else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Moving);
             }
         }
-
 
         else
         {
@@ -204,10 +206,6 @@ public class Enemy_Movement : MonoBehaviour
         rb.velocity = Vector2.zero;
         ChangeState(EnemyState.Idle);
     }
-    
-
-
-
 
 }
 
