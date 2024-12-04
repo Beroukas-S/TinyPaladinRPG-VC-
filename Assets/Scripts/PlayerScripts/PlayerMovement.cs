@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animat;
+    
     public Grow growBig;
     public Player_Combat playerCombat;
     public MouseDirection mouseDirection;
@@ -26,10 +27,14 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerState playerState;
 
+    public PlayerAudio playerAudio;
+
+
 
     private void Start()
     {
         mouseDirection = GetComponent<MouseDirection>();
+        //audioSourceSteps = GetComponent<AudioSource>();
         ChangeState(PlayerState.Idle);
     }
 
@@ -67,7 +72,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 ChangeState(PlayerState.Idle);
             }
-    }
+        }
+        if (playerState == PlayerState.Moving)
+        {
+            playerAudio.PlaySteps();
+        }
+        else
+        {
+            playerAudio.StopSteps();
+        }
 
     }
 
