@@ -75,12 +75,10 @@ public class PlayerMovement : MonoBehaviour
         }
         if (playerState == PlayerState.Moving)
         {
-            playerAudio.PlaySteps();
+            playerAudio.StepSound();
         }
-        else
-        {
-            playerAudio.StopSteps();
-        }
+        
+        
 
     }
 
@@ -146,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckQuickAttack()
     {
+        playerAudio.StopSound();
         if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.QuickAttackUp();
@@ -170,10 +169,12 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.QuickAttack();
         }
+        playerAudio.SwordSound();
     }
 
     public void CheckHeavyAttack()
     {
+        playerAudio.StopSound();
         if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.HeavyAttackUp();
@@ -198,6 +199,7 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.HeavyAttack();
         }
+        playerAudio.SwordSound();
     }
 
     public void CheckBig()

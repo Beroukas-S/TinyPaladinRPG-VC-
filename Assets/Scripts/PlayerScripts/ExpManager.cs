@@ -12,6 +12,7 @@ public class ExpManager : MonoBehaviour
     public float expGrowth = 1.2f;
     public Slider expSlider;
     public TMP_Text currentLevelText;
+    public PlayerUISounds playerAudio;
     //public Animator levelAnim;
     public GameObject playerEffects;
 
@@ -59,6 +60,7 @@ public class ExpManager : MonoBehaviour
         expToLevel = Mathf.RoundToInt(expToLevel * expGrowth);
         playerEffects.GetComponent<Animator>().SetBool("onLvlUp", true);
         OnLevelUp(level);
+        playerAudio.LevelUpSound();
     }
 
 

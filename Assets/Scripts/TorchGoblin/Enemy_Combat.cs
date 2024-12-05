@@ -10,6 +10,7 @@ public class Enemy_Combat : MonoBehaviour
     public float knockBackForce;
     public float knockTime = 1;
     public LayerMask playerLayer;
+    public GoblinAudio goblinAudio;
 
 
     /*
@@ -28,11 +29,17 @@ public class Enemy_Combat : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, weaponRange, playerLayer);
         if (hits.Length > 0)
         {
+            goblinAudio.ThrowSound();
             hits[0].GetComponent<PlayerHealth>().ChangeHP(-damage);
             if (PlayerStats.Instance.currentHP > 0)
             {
                 hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockBackForce, knockTime);
             }
+            /*if (playerHealth.healthState == PlayerHealth.HealthState.Immune)
+            {
+                goblinAudio.BlockedHitSound();
+            }*/
+
             
         }
     }

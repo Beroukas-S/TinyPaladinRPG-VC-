@@ -8,6 +8,7 @@ public class Dynamite : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
     public Transform player;
+    public AudioSource audioSource;
 
     private Vector3 startingPlayerPosition;
     public LayerMask playerLayer;
@@ -58,12 +59,21 @@ public class Dynamite : MonoBehaviour
     { 
         yield return new WaitForSeconds(time);
         animator.SetBool("isBoom", true);
+        BlowSound();
     }
 
     
     public void DestroyDynamite()
     { 
         Destroy(gameObject);
+    }
+
+    public void BlowSound()
+    {
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
     }
 
     public void Damage()

@@ -8,7 +8,8 @@ public class DynaGoblinThrow : MonoBehaviour
     public LayerMask playerLayer;
     public Transform attackPoint;
     public float attackRange;
-    public GameObject dynamite;
+    public GameObject dynamite; 
+    public GoblinAudio goblinAudio;
 
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class DynaGoblinThrow : MonoBehaviour
 
     public void Throw()
     {
+        goblinAudio.ThrowSound();
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
         if (hits.Length > 0)
         {

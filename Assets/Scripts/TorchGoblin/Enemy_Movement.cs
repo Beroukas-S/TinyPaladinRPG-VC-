@@ -15,7 +15,6 @@ public class Enemy_Movement : MonoBehaviour
     public Transform detectionPoint;
     public LayerMask playerLayer;
     public Transform enemyCanvasTransform;
-
     private float attackCDtimer;
     private float faceDirection;
     private EnemyState enemyState;

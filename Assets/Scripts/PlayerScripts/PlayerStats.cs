@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public PlayerHealth playerhealth;
     public static PlayerStats Instance;
+    public PlayerUISounds audioUI;
     private float diff;
     [Header("Combat Stats")]
     public float meleeDamage;
@@ -38,8 +39,8 @@ public class PlayerStats : MonoBehaviour
             Instance = this;
         else 
             Destroy(gameObject);
-        currentHP = maxHP;
-        fireball = false;
+            currentHP = maxHP;
+            fireball = false;
     }
 
     private void Update()
@@ -77,6 +78,7 @@ public class PlayerStats : MonoBehaviour
     { 
         gold += amount;
         playerhealth.UpdateCanvas();
+        audioUI.GoldPickUpSound();
     }
 
     public void BuyFireball()

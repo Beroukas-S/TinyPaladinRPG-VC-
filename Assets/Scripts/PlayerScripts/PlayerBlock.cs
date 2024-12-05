@@ -7,7 +7,7 @@ public class PlayerBlock : MonoBehaviour
     private float timer;
 
     public Animator animator;
-    public AudioSource audioSource;
+    public PlayerAudio playerAudio;
 
     public PlayerHealth playerHealth;
     public PlayerMovement playerMovement;
@@ -15,7 +15,6 @@ public class PlayerBlock : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,10 +34,8 @@ public class PlayerBlock : MonoBehaviour
             animator.SetBool("onBlock", true);
             playerHealth.ChangeState(PlayerHealth.HealthState.Immune);
             playerMovement.ChangeState(PlayerState.Blocking);
-            if (!(audioSource.isPlaying))
-            {
-                audioSource.Play();
-            }
+            playerAudio.BlockSound();
+            
         }
     }
 
@@ -47,7 +44,6 @@ public class PlayerBlock : MonoBehaviour
         animator.SetBool("onBlock", false);
         playerHealth.ChangeState(PlayerHealth.HealthState.Normal);
         timer = PlayerStats.Instance.blockCD;
-        audioSource.Stop();
     }
 
 

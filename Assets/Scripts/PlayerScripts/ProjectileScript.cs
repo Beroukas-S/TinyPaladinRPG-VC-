@@ -9,6 +9,7 @@ public class ProjectileScript : MonoBehaviour
     private Rigidbody2D rb;
     public float projectileSpeed;
     public Animator animator;
+    public AudioSource audioSource;
 
     public float travelDistanceLimit;
 
@@ -56,6 +57,7 @@ public class ProjectileScript : MonoBehaviour
             transform.position = collision.transform.position;
             //transform.position = (collision.transform.position - transform.position).normalized;
             animator.SetBool("onHit", true);
+            audioSource.Play();
         }
         /* Να το φτιάξω με νέο layer ωστε το detection να γίνεται σε καλύτερο σημείο
         else if (collision.gameObject.tag == "Terrain")

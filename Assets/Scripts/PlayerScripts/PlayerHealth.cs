@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public Animator hpDamageAnim;
     public Animator animator;
     private PlayerMovement playermovent;
+    public PlayerAudio playerAudio;
 
     public HealthState healthState;
 
@@ -38,6 +39,7 @@ public class PlayerHealth : MonoBehaviour
                 PlayerStats.Instance.currentHP = 0;
                 ChangeState(HealthState.Dead);
                 playermovent.ChangeState(PlayerState.Dead);
+                playerAudio.DeathSound();
                 playermovent.rb.velocity = Vector2.zero;
                 animator.SetTrigger("onDeath");
             }

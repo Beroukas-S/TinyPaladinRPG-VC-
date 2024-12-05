@@ -4,33 +4,50 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    public AudioSource audiosource;
+    public AudioSource audioSourceSteps;
+    public AudioSource audioSource;
     public AudioClip steps;
     public AudioClip swordSound;
+    public AudioClip blockSound;
+    public AudioClip deathSound;
 
     public void Start()
     {
-        audiosource = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    public void PlaySteps()
+    public void StopSound()
+    { 
+        audioSource.Stop();
+    }
+
+    public void StepSound()
     {
-        if (!audiosource.isPlaying)
+        if (!audioSourceSteps.isPlaying)
         {
-            audiosource.pitch = 2;
-            audiosource.PlayOneShot(steps, 0.05f);
+            audioSourceSteps.pitch = 2;
+            audioSourceSteps.PlayOneShot(steps, 0.05f);
         }
     }
 
-    public void StopSteps()
+    public void BlockSound()
     {
-        audiosource.pitch = 1;
-        audiosource.Stop();
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(blockSound, 0.05f);
+        }
     }
 
-    public void PlaySwordSound()
+
+    public void SwordSound()
     {
-        audiosource.PlayOneShot(swordSound, 0.05f);
+        audioSource.PlayOneShot(swordSound, 0.05f);
     }
+    public void DeathSound()
+    {
+        audioSource.PlayOneShot(deathSound, 0.09f);
+    }
+
+    
     
 }

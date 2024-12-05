@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PickupGold : MonoBehaviour
 {
-    public float goldAmmount;
+    private float goldAmmount;
     public delegate void GoldPickup(float gold);
     public static event GoldPickup OnGoldPickup;
     private float timer;
