@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     public float fireballCD;
     public float blockCD;
     public float statScaling;
+    //public HealthState healthState;
 
     [Header("Health")]
     public float currentHP;
@@ -85,6 +86,19 @@ public class PlayerStats : MonoBehaviour
     {
         fireball = true;
     }
+/*
+    public enum HealthState
+    {
+        Normal,
+        Immune,
+        Vulnerable,
+        Dead
+    }
+
+    public void ChangeState(HealthState newState)
+    {
+        healthState = newState;
+    }*/
 
 
 }

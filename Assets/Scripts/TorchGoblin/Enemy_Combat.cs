@@ -35,12 +35,8 @@ public class Enemy_Combat : MonoBehaviour
             {
                 hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockBackForce, knockTime);
             }
-            /*if (playerHealth.healthState == PlayerHealth.HealthState.Immune)
-            {
-                goblinAudio.BlockedHitSound();
-            }*/
 
-            
+
         }
     }
 
