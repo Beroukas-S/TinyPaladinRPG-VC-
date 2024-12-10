@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBlock : MonoBehaviour
 {
-    private float timer;
+    public float timer;
 
     public Animator animator;
     public PlayerAudio playerAudio;
@@ -34,8 +34,7 @@ public class PlayerBlock : MonoBehaviour
             animator.SetBool("onBlock", true);
             playerHealth.ChangeState(PlayerHealth.HealthState.Immune);
             playerMovement.ChangeState(PlayerState.Blocking);
-            playerAudio.BlockSound();
-            
+            timer = PlayerStats.Instance.blockCD;
         }
     }
 
@@ -43,7 +42,12 @@ public class PlayerBlock : MonoBehaviour
     {
         animator.SetBool("onBlock", false);
         playerHealth.ChangeState(PlayerHealth.HealthState.Normal);
-        timer = PlayerStats.Instance.blockCD;
+        playerAudio.StopSound();
+    }
+
+    public void PlayAudio()
+    {
+        playerAudio.BlockSound();
     }
 
 

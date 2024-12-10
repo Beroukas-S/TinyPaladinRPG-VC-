@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animat;
     
     public Grow growBig;
-    public Player_Combat playerCombat;
+    public PlayerCombat playerCombat;
     public MouseDirection mouseDirection;
 
     public Transform canvasTransform;
@@ -78,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
             playerAudio.StepSound();
         }
         
-        
 
     }
 
@@ -96,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
         isKnocked = true;
         ChangeState(PlayerState.KnockedBack);
         block.BlockEnd();
+        animat.SetBool("isHit", true);
         Vector2 direction = (transform.position - enemy.position).normalized;
         rb.velocity = direction * knockBackForce;
         StartCoroutine(KnockBackTime(duration));
@@ -107,6 +107,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         rb.velocity = Vector2.zero;
         isKnocked = false;
+        animat.SetBool("isHit", false);
         ChangeState(PlayerState.Idle);
 
     }
@@ -144,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckQuickAttack()
     {
-        playerAudio.StopSound();
+        //playerAudio.StopSound();
         if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.QuickAttackUp();
@@ -169,12 +170,16 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.QuickAttack();
         }
-        playerAudio.SwordSound();
+        /*if (playerState != PlayerState.Attacking)
+        {
+            playerAudio.SwordSound();
+        }*/
+        
     }
 
     public void CheckHeavyAttack()
     {
-        playerAudio.StopSound();
+        //playerAudio.StopSound();
         if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.HeavyAttackUp();
@@ -199,7 +204,10 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.HeavyAttack();
         }
-        playerAudio.SwordSound();
+        /*if (playerState != PlayerState.Attacking)
+        {
+            playerAudio.SwordSound();
+        }*/
     }
 
     public void CheckBig()

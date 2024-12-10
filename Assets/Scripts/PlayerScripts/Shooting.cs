@@ -9,7 +9,7 @@ public class Shooting : MonoBehaviour
     private Vector3 mousePos;
     public GameObject projectile;
     public Transform projectileTransform;
-    private float timer;
+    public float timer;
     private bool hasSpell;
 
     //public GameObject projectileCreate = Instantiate(projectile, projectileTransform.position, Quaternion.identity);

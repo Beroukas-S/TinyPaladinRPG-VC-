@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Player_Combat : MonoBehaviour
+public class PlayerCombat : MonoBehaviour
 {
     //attack animation
     public Animator animator;
-    private float timer;
+    public float timer;
 
     //attack damage and hitpoint
     public Transform attackPointHorizontal;
@@ -17,6 +17,7 @@ public class Player_Combat : MonoBehaviour
     public LayerMask enemyLayer;
 
     public PlayerMovement playerMovement;
+    public PlayerAudio playerAudio;
 
 
     public void Update()
@@ -106,6 +107,7 @@ public class Player_Combat : MonoBehaviour
         animator.SetBool("isHatk", false);
         animator.SetBool("isHatkUp", false);
         animator.SetBool("isHatkDown", false);
+        playerAudio.StopSound();
         playerMovement.ChangeState(PlayerState.Idle);
     }
 

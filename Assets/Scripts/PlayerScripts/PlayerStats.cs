@@ -32,7 +32,7 @@ public class PlayerStats : MonoBehaviour
     public float gold;
 
     [Header ("Skills")]
-    public bool fireball;
+    public bool fireball = false;
 
     private void Awake()
     {
@@ -41,7 +41,7 @@ public class PlayerStats : MonoBehaviour
         else 
             Destroy(gameObject);
             currentHP = maxHP;
-            fireball = false;
+            //fireball = false;
     }
 
     private void Update()
@@ -82,7 +82,7 @@ public class PlayerStats : MonoBehaviour
         audioUI.GoldPickUpSound();
     }
 
-    public void BuyFireball()
+    public void HaveFireball()
     {
         fireball = true;
     }

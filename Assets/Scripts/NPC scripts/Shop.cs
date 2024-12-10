@@ -21,7 +21,7 @@ public class Shop : MonoBehaviour
             playerStats.GoldUpdate(-50);
             button.interactable = false;
             button.gameObject.SetActive(false);
-            playerStats.BuyFireball();
+            playerStats.HaveFireball();
             //PlayerSkills.Instance.fireball = true;
         }
         else if (PlayerStats.Instance.gold < 50)

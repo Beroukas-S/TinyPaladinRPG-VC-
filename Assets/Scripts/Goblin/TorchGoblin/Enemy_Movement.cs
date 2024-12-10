@@ -18,7 +18,7 @@ public class Enemy_Movement : MonoBehaviour
     private float attackCDtimer;
     private float faceDirection;
     private EnemyState enemyState;
-    private float timer;
+    private float timerBeforeWander;
 
 
     private Rigidbody2D rb;
@@ -36,6 +36,7 @@ public class Enemy_Movement : MonoBehaviour
         animat = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
         faceDirection = transform.localScale.x;
+        timerBeforeWander = 2;
     }
 
     // Update is called once per frame
@@ -75,9 +76,9 @@ public class Enemy_Movement : MonoBehaviour
             }
             else if (enemyState == EnemyState.Idle)
             {
-                if (timer > 0)
+                if (timerBeforeWander > 0)
                 {
-                    timer -= Time.deltaTime;
+                    timerBeforeWander -= Time.deltaTime;
                 }
                 else
                 {
@@ -85,6 +86,8 @@ public class Enemy_Movement : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     void Chase()
@@ -119,7 +122,7 @@ public class Enemy_Movement : MonoBehaviour
                 attackCDtimer = attackCD;
                 ChangeState(EnemyState.Attacking);
             }
-            else if ((Vector2.Distance(transform.position, player.position) > attackRange && attackCDtimer > 0))
+            else if ((Vector2.Distance(transform.position, player.position) > attackRange && attackCDtimer > 0) && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Idle);
             }
@@ -145,17 +148,21 @@ public class Enemy_Movement : MonoBehaviour
         {
             animat.SetBool("isIdle", false);
         }
-        else if (enemyState == EnemyState.Moving)
+        if (enemyState == EnemyState.Moving)
         {
             animat.SetBool("isMoving", false);
         }
-        else if (enemyState == EnemyState.Attacking)
+        if (enemyState == EnemyState.Attacking)
         {
             animat.SetBool("isAttacking", false);
         }
-        else if (enemyState == EnemyState.Wandering)
+        if (enemyState == EnemyState.Wandering)
         {
             animat.SetBool("isMoving", false);
+        }
+        if (enemyState == EnemyState.KnockedBack)
+        {
+            animat.SetBool("isHit", false);
         }
 
         enemyState = newState;
@@ -164,17 +171,21 @@ public class Enemy_Movement : MonoBehaviour
         {
             animat.SetBool("isIdle", true);
         }
-        else if (enemyState == EnemyState.Moving)
+        if (enemyState == EnemyState.Moving)
         {
             animat.SetBool("isMoving", true);
         }
-        else if (enemyState == EnemyState.Attacking)
+        if (enemyState == EnemyState.Attacking)
         {
             animat.SetBool("isAttacking", true);
         }
-        else if (enemyState == EnemyState.Wandering)
+        if (enemyState == EnemyState.Wandering)
         {
             animat.SetBool("isMoving", true);
+        }
+        if (enemyState == EnemyState.KnockedBack)
+        {
+            animat.SetBool("isHit", true);
         }
     }
 
@@ -194,7 +205,7 @@ public class Enemy_Movement : MonoBehaviour
         Vector2 randDirection = (randPosition - transform.position).normalized;
 
         rb.velocity = randDirection * (speed/2);
-        timer = waitTime;
+        timerBeforeWander = waitTime;
         StartCoroutine(WanderTimer(wanderTime));
 
     }

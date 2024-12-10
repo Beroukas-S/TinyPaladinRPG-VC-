@@ -664,6 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c77f19d246a74b9fafae5503ee476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
   animator: {fileID: 4435434446319032647}
   playerAudio: {fileID: 4360170803256593132}
   playerHealth: {fileID: 9002124717710416870}
@@ -784,7 +785,7 @@ GameObject:
   - component: {fileID: 3014180050008844319}
   - component: {fileID: 7291495526534465720}
   m_Layer: 5
-  m_Name: Icon (1)
+  m_Name: Shield Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1659,7 +1660,7 @@ GameObject:
   - component: {fileID: 5328068891468126423}
   - component: {fileID: 9169940494512551336}
   m_Layer: 5
-  m_Name: Icon (3)
+  m_Name: Grow Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1885,6 +1886,7 @@ GameObject:
   - component: {fileID: 537132785782148436}
   - component: {fileID: 8271413481299124591}
   - component: {fileID: 7123658605489789088}
+  - component: {fileID: 6802128472894605489}
   m_Layer: 5
   m_Name: AbiltyBar
   m_TagString: Untagged
@@ -1953,6 +1955,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6802128472894605489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756285715448744841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013f57a4e18511245be0dafd9ea1dc56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCombat: {fileID: 7131568699225532384}
+  swordImage: {fileID: 2643649120587920837}
+  shieldImage: {fileID: 7291495526534465720}
+  flameImage: {fileID: 4988836691813616392}
+  growImage: {fileID: 9169940494512551336}
+  playerBlock: {fileID: 1266520606922877823}
+  shooting: {fileID: 8334165140071850367}
 --- !u!1 &4845235237811057292
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,9 +2025,9 @@ MonoBehaviour:
   knockBackForce: 20
   knockBackTime: 0.2
   knockBackStun: 0.3
-  attackCD: 0
+  attackCD: 0.2
   fireballDamage: 2
-  fireballCD: 0.5
+  fireballCD: 2
   blockCD: 1.5
   statScaling: 0.1
   currentHP: 0
@@ -2425,7 +2446,7 @@ GameObject:
   - component: {fileID: 2100423027379455872}
   - component: {fileID: 4988836691813616392}
   m_Layer: 5
-  m_Name: Icon (2)
+  m_Name: Fireball Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2537,6 +2558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 4483327332936940491, guid: 45597de1490fa764da47c83279a16ed6, type: 3}
   projectileTransform: {fileID: 1988817819721473936}
+  timer: 0
 --- !u!1 &6159250811504087675
 GameObject:
   m_ObjectHideFlags: 0
@@ -3980,6 +4002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4523585705995646756}
+  timer: 0
   attackPointHorizontal: {fileID: 4268408737448130112}
   attackPointUp: {fileID: 1275985088744765229}
   attackPointDown: {fileID: 3846781551632490542}
@@ -3987,6 +4010,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   playerMovement: {fileID: 2980015302165368584}
+  playerAudio: {fileID: 4360170803256593132}
 --- !u!114 &2634387427200626722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4223,7 +4247,7 @@ GameObject:
   - component: {fileID: 3777431650755628218}
   - component: {fileID: 2643649120587920837}
   m_Layer: 5
-  m_Name: Icon
+  m_Name: Sword Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
