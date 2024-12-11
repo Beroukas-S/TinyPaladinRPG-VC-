@@ -34,7 +34,6 @@ public class PlayerBlock : MonoBehaviour
             animator.SetBool("onBlock", true);
             playerHealth.ChangeState(PlayerHealth.HealthState.Immune);
             playerMovement.ChangeState(PlayerState.Blocking);
-            timer = PlayerStats.Instance.blockCD;
         }
     }
 
@@ -42,8 +41,10 @@ public class PlayerBlock : MonoBehaviour
     {
         animator.SetBool("onBlock", false);
         playerHealth.ChangeState(PlayerHealth.HealthState.Normal);
+        timer = PlayerStats.Instance.blockCD;
         playerAudio.StopSound();
     }
+
 
     public void PlayAudio()
     {

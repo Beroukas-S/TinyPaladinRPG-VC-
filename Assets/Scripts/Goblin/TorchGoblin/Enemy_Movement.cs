@@ -160,10 +160,6 @@ public class Enemy_Movement : MonoBehaviour
         {
             animat.SetBool("isMoving", false);
         }
-        if (enemyState == EnemyState.KnockedBack)
-        {
-            animat.SetBool("isHit", false);
-        }
 
         enemyState = newState;
 
@@ -182,10 +178,6 @@ public class Enemy_Movement : MonoBehaviour
         if (enemyState == EnemyState.Wandering)
         {
             animat.SetBool("isMoving", true);
-        }
-        if (enemyState == EnemyState.KnockedBack)
-        {
-            animat.SetBool("isHit", true);
         }
     }
 

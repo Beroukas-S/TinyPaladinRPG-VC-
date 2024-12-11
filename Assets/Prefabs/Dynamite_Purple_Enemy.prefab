@@ -597,11 +597,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expReward: 2
-  goblinAudio: {fileID: 7976967298210833554}
   currentHP: 0
   maxHP: 3
   gold: {fileID: 9176913866937988657, guid: 01dea08831d8f4a44b6d32483b081952, type: 3}
   enemyRenderer: {fileID: 123277671216464333}
+  wiggleTime: 0.05
 --- !u!114 &3425769521901107940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 5291925734256283727}
   throwSound: {fileID: 8300000, guid: 3d4057d1ea835f04f9baf761b1bade74, type: 3}
-  deathSound: {fileID: 8300000, guid: fb85003b28fc7b743afd5ddf7bd5eebb, type: 3}
+  blockedSound: {fileID: 0}
 --- !u!1 &7790528603475349455
 GameObject:
   m_ObjectHideFlags: 0

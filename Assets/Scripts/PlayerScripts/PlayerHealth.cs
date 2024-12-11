@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Threading.Tasks;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public Animator animator;
     private PlayerMovement playermovent;
     public PlayerAudio playerAudio;
+    public new SpriteRenderer renderer;
+    [SerializeField] private float wiggleTime;
 
     public HealthState healthState;
 
@@ -20,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
         ChangeState(HealthState.Normal);
         playermovent = GetComponent<PlayerMovement>();
         PlayerStats.Instance.currentHP = PlayerStats.Instance.maxHP;
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     public void ChangeHP(float amount)
@@ -43,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
                 playermovent.rb.velocity = Vector2.zero;
                 animator.SetTrigger("onDeath");
             }
-
+            GetHitRed();
             hpDamageAnim.Play("Text_Damage");
             UpdateCanvas();
 
@@ -60,6 +64,23 @@ public class PlayerHealth : MonoBehaviour
     public void ChangeState(HealthState newState)
     {
         healthState = newState;
+    }
+
+    public void GetHitRed()
+    {
+        renderer.material.color = Color.red;
+        StartCoroutine(HitWiggle(wiggleTime));
+    }
+
+    IEnumerator HitWiggle(float wiggleTime)
+    {
+        yield return new WaitForSecondsRealtime(wiggleTime);
+        renderer.material.color = Color.white;
+        yield return new WaitForSecondsRealtime(wiggleTime);
+        renderer.material.color = Color.red;
+        yield return new WaitForSecondsRealtime(wiggleTime);
+        renderer.material.color = Color.white;
+
     }
 
     public void PlayerDeath()

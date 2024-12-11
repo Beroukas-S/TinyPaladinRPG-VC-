@@ -15,7 +15,7 @@ public class Enemy_Health : MonoBehaviour
 
     public GameObject gold;
     public SpriteRenderer enemyRenderer;
-
+    [SerializeField] private float wiggleTime;
     private void Awake()
     {
         healthbar = GetComponentInChildren<EnemyHealthbar>();
@@ -48,7 +48,27 @@ public class Enemy_Health : MonoBehaviour
             Destroy(gameObject);
 
         }
+        GetHitRed();
     }
+
+    public void GetHitRed()
+    {
+        enemyRenderer.material.color = Color.red;
+        StartCoroutine(HitWiggle(wiggleTime));
+    }
+
+    IEnumerator HitWiggle(float wiggleTime)
+    {
+        yield return new WaitForSecondsRealtime(wiggleTime);
+        enemyRenderer.material.color = Color.white;
+        yield return new WaitForSecondsRealtime(wiggleTime);
+        enemyRenderer.material.color = Color.red;
+        yield return new WaitForSecondsRealtime(wiggleTime);
+        enemyRenderer.material.color = Color.white;
+
+    }
+
+
 
     public void GoldDrop()
     {

@@ -34,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         mouseDirection = GetComponent<MouseDirection>();
-        //audioSourceSteps = GetComponent<AudioSource>();
         ChangeState(PlayerState.Idle);
     }
 
@@ -95,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
         isKnocked = true;
         ChangeState(PlayerState.KnockedBack);
         block.BlockEnd();
-        animat.SetBool("isHit", true);
         Vector2 direction = (transform.position - enemy.position).normalized;
         rb.velocity = direction * knockBackForce;
         StartCoroutine(KnockBackTime(duration));
@@ -107,7 +105,6 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         rb.velocity = Vector2.zero;
         isKnocked = false;
-        animat.SetBool("isHit", false);
         ChangeState(PlayerState.Idle);
 
     }
@@ -119,13 +116,19 @@ public class PlayerMovement : MonoBehaviour
         if (!secondAttack && Input.GetMouseButtonDown(0))
         {
             CheckQuickAttack();
-            block.BlockEnd();
+            if (playerState == PlayerState.Blocking)
+            {
+                block.BlockEnd();
+            }
             ChangeState(PlayerState.Attacking);
         }
         else if (secondAttack && Input.GetMouseButtonDown(0))
         { 
             CheckHeavyAttack();
-            block.BlockEnd();
+            if (playerState == PlayerState.Blocking)
+            {
+                block.BlockEnd();
+            }
             ChangeState(PlayerState.Attacking);
         }
     }
@@ -145,7 +148,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckQuickAttack()
     {
-        //playerAudio.StopSound();
         if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.QuickAttackUp();
@@ -170,16 +172,11 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.QuickAttack();
         }
-        /*if (playerState != PlayerState.Attacking)
-        {
-            playerAudio.SwordSound();
-        }*/
         
     }
 
     public void CheckHeavyAttack()
     {
-        //playerAudio.StopSound();
         if (mouseDirection.attackDirection == 3) 
         {
             playerCombat.HeavyAttackUp();
@@ -204,10 +201,6 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.HeavyAttack();
         }
-        /*if (playerState != PlayerState.Attacking)
-        {
-            playerAudio.SwordSound();
-        }*/
     }
 
     public void CheckBig()
