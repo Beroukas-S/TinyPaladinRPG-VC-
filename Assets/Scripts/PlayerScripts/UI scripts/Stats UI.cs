@@ -9,33 +9,17 @@ public class StatsUI : MonoBehaviour
     public GameObject[] statSquares;
     public CanvasGroup statsCanvas;
 
-    private bool statsOpen = false;
 
     private void Start()
     {
         UpdateStats();
-        statsCanvas.alpha = 0;
+        //statsCanvas.alpha = 0;
     }
 
-    private void Update()
-    {
-        if (Input.GetButtonDown("ToggleStats"))
-        {
-            if (statsOpen)
-            {
-                Time.timeScale = 1;
-                statsCanvas.alpha = 0;
-                statsOpen = false;
-            }
-            else 
-            {
-                Time.timeScale = 0;
-                UpdateStats();
-                statsCanvas.alpha = 1;
-                statsOpen = true;
-            }
-        }
-    }
+    //private void Update()
+    //{
+        
+    //}
 
 
     public void UpdateStrengthStat()

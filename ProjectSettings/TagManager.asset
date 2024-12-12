@@ -8,6 +8,7 @@ TagManager:
   - Projectile
   - Canvas
   - Terrain
+  - Quests
   layers:
   - Default
   - TransparentFX

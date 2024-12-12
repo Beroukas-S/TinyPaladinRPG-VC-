@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public PlayerState playerState;
 
     public PlayerAudio playerAudio;
+    public bool immobilized = false;
 
 
 
@@ -49,7 +50,11 @@ public class PlayerMovement : MonoBehaviour
     // fixedUpdate is called 50 per second
     void FixedUpdate()
     {
-        if (isKnocked == false && playerState != PlayerState.Dead) 
+        if (immobilized)
+        { 
+            ChangeState(PlayerState.Idle);
+        }
+        if (isKnocked == false && playerState != PlayerState.Dead && !immobilized) 
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");

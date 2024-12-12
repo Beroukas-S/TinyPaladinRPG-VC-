@@ -9,10 +9,13 @@ public class FirstQuest : Quest
     {
         ChangeQuestState(QuestState.Pending);
         id = 1;
-        questName = "Talk to the leader.";
+        questName = "Introductions";
+        questDescription = "Talk to the village leader.";
+        questPrerequisiteID = 0;
         goldReward = 0;
         xpReward = 10;
-
+        questProgress = 0;
+        questGoal = 1;
     }
 
     protected override void ChangeQuestState(QuestState newState)
@@ -22,17 +25,29 @@ public class FirstQuest : Quest
 
     private void OnEnable()
     {
+        BridgeGuard.OnTalkingToBridgeGuard += ActivateQuest;
         //Klasi me to event pou tou milaw.OnTouMilisa += CheckProgress;
     }
 
     private void OnDisable()
     {
+        BridgeGuard.OnTalkingToBridgeGuard -= ActivateQuest;
         //Klasi me to event pou tou milaw.OnTouMilisa -= CheckProgress;
+    }
+
+    public override void CheckProgress()
+    {
+        questProgress++;
+        if (questProgress == questGoal)
+        {
+            CompleteQuest();
+        }
     }
 
     public override void ActivateQuest()
     {
         ChangeQuestState(QuestState.Active);
+        questEvents.ActivateQuest(this);
     }
 
     public override void CompleteQuest()

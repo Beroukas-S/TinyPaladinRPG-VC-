@@ -6,10 +6,13 @@ public abstract class Quest : MonoBehaviour
 {
     public int id;
     public string questName;
+    public string questDescription;
     public QuestState state;
-    public Quest questPrerequisite;
+    public int questPrerequisiteID;
     public int goldReward;
     public int xpReward;
+    public int questProgress;
+    public int questGoal;
 
     public enum QuestState
     {
@@ -20,7 +23,7 @@ public abstract class Quest : MonoBehaviour
 
     protected abstract void ChangeQuestState(QuestState newState);
 
-    //public abstract void CheckProgress();
+    public abstract void CheckProgress();
 
     public abstract void ActivateQuest();
     public abstract void CompleteQuest();
