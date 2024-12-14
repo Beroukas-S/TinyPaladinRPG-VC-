@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2689dd4565fe024f9d5b8abd2c23bc0, type: 3}
+  m_Name: SecondQuest
+  m_EditorClassIdentifier: 
+  id: 2
+  questName: Help the village
+  prerequisitesOk: 0
+  goldReward: 20
+  xpReward: 20
+  active: 0
+  completed: 1
+  questDescription: Kill 10 goblins.
+  objectiveGoalProgress: 2
+  objectiveGoal: 2
+  objectives:
+  - {fileID: 11400000, guid: 65da6c2899033e14f967641896c8bf52, type: 2}

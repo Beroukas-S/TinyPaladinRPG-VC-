@@ -61,7 +61,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 21
   m_TargetDisplay: 0
 --- !u!114 &4736436929542022319
 MonoBehaviour:
@@ -112,8 +112,8 @@ CanvasGroup:
   m_GameObject: {fileID: 149392507169559500}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &199127640726897654
 GameObject:
@@ -2966,6 +2966,7 @@ MonoBehaviour:
   goalText: {fileID: 4474249957095851025}
   progressText: {fileID: 6207764570371814482}
   rewardsText: {fileID: 1490004541601747941}
+  questSystem: {fileID: 8342043969484499981}
 --- !u!1 &4194693714101707085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,6 +3606,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerhealth: {fileID: 9002124717710416870}
   audioUI: {fileID: 7820148525732426429}
+  objectiveSecond: {fileID: 11400000, guid: 65da6c2899033e14f967641896c8bf52, type: 2}
+  enemyKillCount: 0
   meleeDamage: 1
   weaponRange: 0.7
   knockBackForce: 20
@@ -5124,8 +5127,8 @@ CanvasGroup:
   m_GameObject: {fileID: 6704543318708323046}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &5156965001372693544
 MonoBehaviour:
@@ -5224,7 +5227,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 2731343976918848661}
   m_HandleRect: {fileID: 0}
@@ -6136,6 +6139,7 @@ GameObject:
   - component: {fileID: 7965220444256817436}
   - component: {fileID: 4360170803256593132}
   - component: {fileID: 7005989928890086077}
+  - component: {fileID: 8342043969484499981}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -6604,6 +6608,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8342043969484499981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387762494533585503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef68fc429bf74942966a7f1088bef8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentQuest: {fileID: 0}
+  openQuests: []
 --- !u!1 &8403430076067447172
 GameObject:
   m_ObjectHideFlags: 0

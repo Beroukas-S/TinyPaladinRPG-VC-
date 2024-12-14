@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class BridgeGuard : MonoBehaviour
+public class GuardTalk : MonoBehaviour
 {
     [SerializeField] private CircleCollider2D circleCollider;
     [SerializeField] private CanvasGroup guardCanvas;
-    [SerializeField] private bool messageConfirm;
     [SerializeField] private CanvasGroup playerCanvas;
-    [SerializeField] private bool inRange = false;
+    [SerializeField] public bool inRange = false;
     [SerializeField] private bool interacted = false;
-    [SerializeField] private bool messageIsOn = false;
+    [SerializeField] public bool messageIsOn = false;
     [SerializeField] private Rigidbody2D playerRB;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private TextMeshProUGUI playerText;
+    [SerializeField] private UnityEvent OnPressedY;
 
-    public delegate void TalkedToBridgeGuard();
-    public static event TalkedToBridgeGuard OnTalkingToBridgeGuard;
+
 
     private void Update()
     {
@@ -30,7 +30,7 @@ public class BridgeGuard : MonoBehaviour
         { 
             MessageShow();
             MobilizePlayer();
-            OnTalkingToBridgeGuard?.Invoke();
+            OnPressedY.Invoke(); 
         }
     }
 
@@ -77,6 +77,7 @@ public class BridgeGuard : MonoBehaviour
     private void ImmobilizePlayer()
     {
         playerMovement.immobilized = true;
+        playerMovement.ChangeState(PlayerState.Idle);
         playerRB.velocity = Vector2.zero;
     }
 

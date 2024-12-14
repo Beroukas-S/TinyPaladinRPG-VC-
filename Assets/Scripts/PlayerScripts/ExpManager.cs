@@ -36,19 +36,19 @@ public class ExpManager : MonoBehaviour
     private void OnEnable()
     {
         Enemy_Health.OnEnemyDefeated += GainExp;
-        QuestEvents.OnQuestCompletion += QuestRewards;
+        QuestSystem.OnQuestComplitionStatic += QuestRewards;
     }
 
     private void OnDisable()
     {
         Enemy_Health.OnEnemyDefeated -= GainExp;
-        QuestEvents.OnQuestCompletion -= QuestRewards;
+        QuestSystem.OnQuestComplitionStatic -= QuestRewards;
     }
 
-    public void QuestRewards(int gold, int exp)
+    public void QuestRewards(Quest completedQuest)
     {
-        GainExp(exp);
-        PlayerStats.Instance.GoldUpdate(gold);
+        GainExp(completedQuest.xpReward);
+        PlayerStats.Instance.GoldUpdate(completedQuest.goldReward);
     }
 
 

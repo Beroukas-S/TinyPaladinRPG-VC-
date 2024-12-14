@@ -10,51 +10,61 @@ public class QuestsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI goalText;
     [SerializeField] private TextMeshProUGUI progressText;
     [SerializeField] private TextMeshProUGUI rewardsText;
+    [SerializeField] private QuestSystem questSystem;
 
-    private void Awake()
-    {
-        activeQuest = GetComponent<ZeroQuest>();
-    }
+    //private void Awake()
+    //{
+    //    activeQuest = GetComponent<ZeroQuest>();
+    //}
 
-    void Start()
+
+    private void Update()
     {
         UpdateCanvas();
     }
 
-
+    public void UpdateActiveQuest(Quest currentQuest)
+    {
+        activeQuest = currentQuest;
+        if (currentQuest.completed == true)
+        { 
+            activeQuest = null;
+        }
+    }
 
     private void OnEnable()
     {
-        QuestEvents.OnQuestActivation += GetActiveQuest;
+        QuestSystem.OnQuestActivationStatic += UpdateActiveQuest;
+        QuestSystem.OnQuestComplitionStatic += UpdateActiveQuest;
     }
 
     private void OnDisable()
     {
-        QuestEvents.OnQuestActivation -= GetActiveQuest;
+        QuestSystem.OnQuestActivationStatic -= UpdateActiveQuest;
+        QuestSystem.OnQuestComplitionStatic -= UpdateActiveQuest;
     }
 
-    public void GetActiveQuest(Quest activatedQuest)
-    { 
-        activeQuest = activatedQuest;
-    }
+
+
+
 
     public void UpdateCanvas()
     {
-        if (activeQuest is ZeroQuest)
+        if (activeQuest != null)
         {
             questTitleText.text = $"{activeQuest.questName}";
+            goalText.text = $"{activeQuest.questDescription}";
+            progressText.text = $"{activeQuest.objectiveGoalProgress} / {activeQuest.objectiveGoal}";
+            rewardsText.text = $"{activeQuest.goldReward} Gold {activeQuest.xpReward} XP";
+        }
+        else
+        {
+            questTitleText.text = $"No active quest.";
             goalText.text = $"";
             progressText.text = $"";
             rewardsText.text = $"";
         }
-        else
-        {
-            questTitleText.text = $"{activeQuest.questName}";
-            goalText.text = $"{activeQuest.questDescription}";
-            progressText.text = $"{activeQuest.questProgress} / {activeQuest.questGoal}";
-            rewardsText.text = $"{activeQuest.goldReward} Gold {activeQuest.xpReward} XP";
-        }
     }
 
-    
+
 }

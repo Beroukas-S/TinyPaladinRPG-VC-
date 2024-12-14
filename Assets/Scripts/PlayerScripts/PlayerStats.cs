@@ -8,6 +8,8 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance;
     public PlayerUISounds audioUI;
     private float diff;
+    [SerializeField] private Objective objectiveSecond;
+    [SerializeField] public int enemyKillCount;
     [Header("Combat Stats")]
     public float meleeDamage;
     public float weaponRange;
@@ -56,12 +58,20 @@ public class PlayerStats : MonoBehaviour
     {
         ExpManager.OnLevelUp += UpdateStats;
         PickupGold.OnGoldPickup += GoldUpdate;
+        Enemy_Health.OnEnemyDefeated += EnemyKillCounter;
     }
 
     private void OnDisable()
     {
         ExpManager.OnLevelUp -= UpdateStats;
         PickupGold.OnGoldPickup -= GoldUpdate;
+        Enemy_Health.OnEnemyDefeated -= EnemyKillCounter;
+    }
+
+    private void EnemyKillCounter(int nothing)
+    {
+        enemyKillCount++;
+        objectiveSecond.ProgressObjective();
     }
 
     private void UpdateStats(int level)

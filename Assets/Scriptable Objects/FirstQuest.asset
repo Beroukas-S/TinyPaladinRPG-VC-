@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2689dd4565fe024f9d5b8abd2c23bc0, type: 3}
+  m_Name: FirstQuest
+  m_EditorClassIdentifier: 
+  id: 1
+  questName: Introductions
+  prerequisitesOk: 0
+  goldReward: 0
+  xpReward: 10
+  active: 0
+  completed: 0
+  questDescription: Talk to the village leader.
+  objectiveGoalProgress: 0
+  objectiveGoal: 1
+  objectives:
+  - {fileID: 11400000, guid: 0c258bdbbc2a55e4d8cca4613fc43d60, type: 2}

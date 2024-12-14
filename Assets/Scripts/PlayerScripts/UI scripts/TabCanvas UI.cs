@@ -20,7 +20,6 @@ public class MenuCanvasUI : MonoBehaviour
     {
         menuCanvas.alpha = 0;
         menuOpen = false;
-        statsCanvas.alpha = 1;
     }
 
     // Update is called once per frame
@@ -33,12 +32,16 @@ public class MenuCanvasUI : MonoBehaviour
                 Time.timeScale = 1;
                 menuCanvas.alpha = 0;
                 menuOpen = false;
+                menuCanvas.interactable = false;
+                menuCanvas.blocksRaycasts = false;
             }
             else
             {
                 Time.timeScale = 0;
                 menuCanvas.alpha = 1;
                 menuOpen = true;
+                menuCanvas.interactable= true;
+                menuCanvas.blocksRaycasts = true;
             }
         }
     }

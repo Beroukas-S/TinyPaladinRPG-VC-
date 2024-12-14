@@ -10,7 +10,7 @@ public class StatsUI : MonoBehaviour
     public CanvasGroup statsCanvas;
 
 
-    private void Start()
+    private void Update()
     {
         UpdateStats();
         //statsCanvas.alpha = 0;
