@@ -14,11 +14,9 @@ public class Quest : ScriptableObject
 
     public event Action<Quest> OnQuestCompleted;
     public bool active;
-    //public bool completed { get; private set; }
     public bool completed;
     [TextArea]
     public string questDescription;
-    //public int completedObjectives = 0;
     public int objectiveGoalProgress = 0;
     public int objectiveGoal = 0;
     public List<Objective> objectives = new List<Objective>();
@@ -35,10 +33,6 @@ public class Quest : ScriptableObject
                     return;
                 }
             }
-            //if (objectives[i].Completed == true)
-            //{ 
-            //    completedObjectives++;
-            //}
 
             completed = true;
             active = false;

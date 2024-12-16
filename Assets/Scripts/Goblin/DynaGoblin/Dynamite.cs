@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Dynamite : MonoBehaviour
 {
+    [SerializeField] private Player player;
     private Rigidbody2D rb;
     public Animator animator;
-    public Transform player;
+    public Transform playerTransform;
     public AudioSource audioSource;
 
     private Vector3 startingPlayerPosition;
@@ -27,10 +28,10 @@ public class Dynamite : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        Vector2 direction = (player.transform.position - transform.position).normalized;
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        Vector2 direction = (playerTransform.transform.position - transform.position).normalized;
         rb.velocity = direction * dynamiteSpeed;
-        startingPlayerPosition = player.transform.position;
+        startingPlayerPosition = playerTransform.transform.position;
     }
 
     // Update is called once per frame
@@ -81,8 +82,8 @@ public class Dynamite : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRange, playerLayer);
         if (hits.Length > 0)
         {
-            hits[0].GetComponent<PlayerHealth>().ChangeHP(-damage);
-            if (PlayerStats.Instance.currentHP > 0)
+            hits[0].GetComponent<PlayerHealthMono>().ChangeHP(-damage);
+            if (player.currentHP > 0)
             {
                 hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockBackForce, knockTime);
             }

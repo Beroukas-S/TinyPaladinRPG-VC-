@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Enemy_Health : MonoBehaviour
 {
-    public int expReward;
+    [SerializeField] private Enemy enemy;
     public delegate void EnemyDefeated(int exp);
     public static event EnemyDefeated OnEnemyDefeated;
-
-    public float currentHP;
-    public float maxHP;
 
     private EnemyHealthbar healthbar;
 
@@ -24,23 +21,23 @@ public class Enemy_Health : MonoBehaviour
 
     void Start()
     {
-        currentHP = maxHP;
-        healthbar.UpdateHealthBar(currentHP, maxHP);
+        enemy.currentHP = enemy.maxHP;
+        healthbar.UpdateHealthBar(enemy.currentHP, enemy.maxHP);
     }
 
     public void ChangeHP(float amount)
     {
-        currentHP += amount;
+        enemy.currentHP += amount;
         
 
-        if (currentHP > maxHP)
+        if (enemy.currentHP > enemy.maxHP)
         {
-            currentHP = maxHP;
+            enemy.currentHP = enemy.maxHP;
         }
-        healthbar.UpdateHealthBar(currentHP,maxHP);
-        if (currentHP <= 0)
+        healthbar.UpdateHealthBar(enemy.currentHP, enemy.maxHP);
+        if (enemy.currentHP <= 0)
         {
-            OnEnemyDefeated(expReward);
+            OnEnemyDefeated(enemy.expReward);
 
             GoldDrop();
             

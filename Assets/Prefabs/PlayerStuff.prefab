@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef21942d3db41249a349dd1f3098ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   statSquares:
   - {fileID: 4069793354981529854}
   - {fileID: 1809323100864763632}
@@ -1065,10 +1066,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c77f19d246a74b9fafae5503ee476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   timer: 0
   animator: {fileID: 4435434446319032647}
   playerAudio: {fileID: 4360170803256593132}
-  playerHealth: {fileID: 9002124717710416870}
   playerMovement: {fileID: 2980015302165368584}
 --- !u!1 &1782117691491645730
 GameObject:
@@ -1871,6 +1872,7 @@ MonoBehaviour:
   currentLevelText: {fileID: 721524917588265739}
   playerAudio: {fileID: 7820148525732426429}
   playerEffects: {fileID: 8162386492826373771}
+  playerStats: {fileID: 7332208781509450156}
 --- !u!82 &1545784092386064292
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3553,6 +3555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013f57a4e18511245be0dafd9ea1dc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   playerCombat: {fileID: 7131568699225532384}
   swordImage: {fileID: 2643649120587920837}
   shieldImage: {fileID: 7291495526534465720}
@@ -3571,7 +3574,7 @@ GameObject:
   - component: {fileID: 8031332967807472687}
   - component: {fileID: 7332208781509450156}
   m_Layer: 0
-  m_Name: PlayerStats
+  m_Name: PlayerStatsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3605,24 +3608,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhealth: {fileID: 9002124717710416870}
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   audioUI: {fileID: 7820148525732426429}
   objectiveSecond: {fileID: 11400000, guid: 65da6c2899033e14f967641896c8bf52, type: 2}
   enemyKillCount: 0
-  meleeDamage: 1
-  weaponRange: 0.7
-  knockBackForce: 20
-  knockBackTime: 0.2
-  knockBackStun: 0.3
-  attackCD: 0.2
-  fireballDamage: 2
-  fireballCD: 2
-  blockCD: 1.5
-  statScaling: 0.1
-  currentHP: 0
-  maxHP: 30
-  speed: 5
-  gold: 55
-  fireball: 0
 --- !u!1 &4918531774257756466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,6 +4598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a79e6c0be10f484894f69d572e4e196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   projectile: {fileID: 4483327332936940491, guid: 45597de1490fa764da47c83279a16ed6, type: 3}
   projectileTransform: {fileID: 1988817819721473936}
   timer: 0
@@ -6295,6 +6285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52838539abc31a149b5cf24b074b10e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   faceDirection: 1
   rb: {fileID: 8459350185049920372}
   animat: {fileID: 4523585705995646756}
@@ -6306,7 +6297,6 @@ MonoBehaviour:
   isKnocked: 0
   secondAttack: 0
   block: {fileID: 1266520606922877823}
-  playerState: 0
   playerAudio: {fileID: 4360170803256593132}
   immobilized: 0
 --- !u!95 &4523585705995646756
@@ -6342,13 +6332,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53f5828553ebe14e85f1e7b09152cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   healthText: {fileID: 9086839481403857437}
   hpDamageAnim: {fileID: 2013829165771735002}
   animator: {fileID: 4523585705995646756}
   playerAudio: {fileID: 4360170803256593132}
   renderer: {fileID: 8303884161901803692}
   wiggleTime: 0.05
-  healthState: 0
 --- !u!114 &4660245779569661310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6374,6 +6364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1593e386ba8f634a86caf6ff45f0c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   animator: {fileID: 4523585705995646756}
   timer: 0
   attackPointHorizontal: {fileID: 4268408737448130112}

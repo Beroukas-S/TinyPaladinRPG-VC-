@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class AbilityBarUI : MonoBehaviour
 {
+    [SerializeField] private Player player;
     [SerializeField] private PlayerCombat playerCombat;
     [SerializeField] private UnityEngine.UI.Image swordImage;
     [SerializeField] private UnityEngine.UI.Image shieldImage;
@@ -33,7 +34,7 @@ public class AbilityBarUI : MonoBehaviour
         {
             shieldImage.color = Color.white;
         }
-        if (shooting.timer > 0 || !PlayerStats.Instance.fireball)
+        if (shooting.timer > 0 || !player.fireball)
         {
             flameImage.color = Color.red;
         }

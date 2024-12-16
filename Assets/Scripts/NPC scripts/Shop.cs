@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public PlayerStats playerStats;
+    [SerializeField] private Player player;
+    [SerializeField] private PlayerStatsManager playerStats;
     public Button button;
     public float timer;
     public CanvasGroup canvasGroup;
@@ -16,7 +17,7 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     public void BuySpell()
     {
-        if (PlayerStats.Instance.gold >= 50)
+        if (player.gold >= 50)
         {
             playerStats.GoldUpdate(-50);
             button.interactable = false;
@@ -24,7 +25,7 @@ public class Shop : MonoBehaviour
             playerStats.HaveFireball();
             //PlayerSkills.Instance.fireball = true;
         }
-        else if (PlayerStats.Instance.gold < 50)
+        else if (player.gold < 50)
         {
             canvasGroup.alpha = 1;
             StartCoroutine(InsufficientPopUp(timer));

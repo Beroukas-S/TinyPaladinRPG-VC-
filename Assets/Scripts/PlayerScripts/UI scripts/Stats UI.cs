@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class StatsUI : MonoBehaviour
 {
+    [SerializeField] private Player player;
     public GameObject[] statSquares;
     public CanvasGroup statsCanvas;
 
@@ -13,33 +14,28 @@ public class StatsUI : MonoBehaviour
     private void Update()
     {
         UpdateStats();
-        //statsCanvas.alpha = 0;
     }
 
-    //private void Update()
-    //{
-        
-    //}
 
 
     public void UpdateStrengthStat()
     {
-        statSquares[0].GetComponentInChildren<TMP_Text>().text = "Strength: " + PlayerStats.Instance.meleeDamage;
+        statSquares[0].GetComponentInChildren<TMP_Text>().text = "Strength: " + player.meleeDamage;
     }
 
     public void UpdateSpeedStat()
     {
-        statSquares[1].GetComponentInChildren<TMP_Text>().text = "Speed: " + PlayerStats.Instance.speed;
+        statSquares[1].GetComponentInChildren<TMP_Text>().text = "Speed: " + player.speed;
     }
 
     public void UpdateHealthStat()
     {
-        statSquares[2].GetComponentInChildren<TMP_Text>().text = "Health: " + PlayerStats.Instance.maxHP;
+        statSquares[2].GetComponentInChildren<TMP_Text>().text = "Health: " + player.maxHP;
     }
 
     public void UpdateGoldStat()
     {
-        statSquares[3].GetComponentInChildren<TMP_Text>().text = "Gold: " + PlayerStats.Instance.gold;
+        statSquares[3].GetComponentInChildren<TMP_Text>().text = "Gold: " + player.gold;
     }
 
     public void UpdateStats()

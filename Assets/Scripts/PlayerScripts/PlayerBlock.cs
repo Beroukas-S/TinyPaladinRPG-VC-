@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerBlock : MonoBehaviour
 {
+    [SerializeField] private Player player;
     public float timer;
 
     public Animator animator;
     public PlayerAudio playerAudio;
 
-    public PlayerHealth playerHealth;
     public PlayerMovement playerMovement;
 
     private void Start()
@@ -32,16 +32,16 @@ public class PlayerBlock : MonoBehaviour
         if (timer <= 0)
         {
             animator.SetBool("onBlock", true);
-            playerHealth.ChangeState(PlayerHealth.HealthState.Immune);
-            playerMovement.ChangeState(PlayerState.Blocking);
+            player.ChangeHealthState(Player.HealthState.Immune);
+            player.ChangeMovementState(Player.MovementState.Blocking);
         }
     }
 
     public void BlockEnd()
     {
         animator.SetBool("onBlock", false);
-        playerHealth.ChangeState(PlayerHealth.HealthState.Normal);
-        timer = PlayerStats.Instance.blockCD;
+        player.ChangeHealthState(Player.HealthState.Normal);
+        timer = player.blockCD;
         playerAudio.StopSound();
     }
 

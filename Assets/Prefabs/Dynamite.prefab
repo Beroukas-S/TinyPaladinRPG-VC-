@@ -184,8 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e2457bb9dc8d345b0b0f0ff82e9ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   animator: {fileID: 6111749154332222218}
-  player: {fileID: 0}
+  playerTransform: {fileID: 0}
   audioSource: {fileID: 3707577199518623204}
   playerLayer:
     serializedVersion: 2

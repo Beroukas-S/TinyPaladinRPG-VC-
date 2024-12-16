@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 815588d1156386b4099b2cc9fc6696d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   projectileSpeed: 10
   animator: {fileID: 8218802929188552328}
   audioSource: {fileID: -4353543808523444986}

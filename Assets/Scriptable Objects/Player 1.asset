@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3441bf4bb6041914ebd80fefa68caf37, type: 3}
+  m_Name: Player 1
+  m_EditorClassIdentifier: 
+  meleeDamage: 1
+  weaponRange: 0.7
+  knockBackForce: 20
+  knockBackTime: 0.05
+  knockBackStun: 0.2
+  attackCD: 0.2
+  blockCD: 1.5
+  statScaling: 0.1
+  fireballDamage: 2
+  fireballCD: 2
+  currentHP: 34
+  maxHP: 15
+  speed: 5
+  gold: 50
+  fireball: 0
+  healthState: 0
+  moveState: 0

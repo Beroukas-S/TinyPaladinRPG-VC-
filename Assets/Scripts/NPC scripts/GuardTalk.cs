@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class GuardTalk : MonoBehaviour
 {
+    [SerializeField] private Player player;
     [SerializeField] private CircleCollider2D circleCollider;
     [SerializeField] private CanvasGroup guardCanvas;
     [SerializeField] private CanvasGroup playerCanvas;
@@ -77,7 +78,7 @@ public class GuardTalk : MonoBehaviour
     private void ImmobilizePlayer()
     {
         playerMovement.immobilized = true;
-        playerMovement.ChangeState(PlayerState.Idle);
+        player.ChangeMovementState(Player.MovementState.Idle);
         playerRB.velocity = Vector2.zero;
     }
 

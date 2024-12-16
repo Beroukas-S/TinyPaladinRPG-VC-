@@ -15,6 +15,7 @@ public class ExpManager : MonoBehaviour
     public PlayerUISounds playerAudio;
     //public Animator levelAnim;
     public GameObject playerEffects;
+    [SerializeField] private PlayerStatsManager playerStats;
 
     public delegate void LevelUpEvent(int level);
     public static event LevelUpEvent OnLevelUp;
@@ -48,7 +49,7 @@ public class ExpManager : MonoBehaviour
     public void QuestRewards(Quest completedQuest)
     {
         GainExp(completedQuest.xpReward);
-        PlayerStats.Instance.GoldUpdate(completedQuest.goldReward);
+        playerStats.GoldUpdate(completedQuest.goldReward);
     }
 
 

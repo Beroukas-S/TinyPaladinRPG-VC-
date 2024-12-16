@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    [SerializeField] private Player player;
     //attack animation
     public Animator animator;
     public float timer;
@@ -36,7 +37,7 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isQatk", true);
-            timer = PlayerStats.Instance.attackCD;
+            timer = player.attackCD;
         }
     }
 
@@ -48,7 +49,7 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isQatkUP", true);
-            timer = PlayerStats.Instance.attackCD;
+            timer = player.attackCD;
         }
 
     }
@@ -59,7 +60,7 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isQatkDown", true);
-            timer = PlayerStats.Instance.attackCD;
+            timer = player.attackCD;
         }
 
     }
@@ -70,7 +71,7 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isHatk", true);
-            timer = PlayerStats.Instance.attackCD;
+            timer = player.attackCD;
         }
 
     }
@@ -81,7 +82,7 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isHatkUp", true);
-            timer = PlayerStats.Instance.attackCD;
+            timer = player.attackCD;
         }
 
     }
@@ -92,7 +93,7 @@ public class PlayerCombat : MonoBehaviour
         {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isHatkDown", true);
-            timer = PlayerStats.Instance.attackCD;
+            timer = player.attackCD;
         }
 
     }
@@ -108,74 +109,74 @@ public class PlayerCombat : MonoBehaviour
         animator.SetBool("isHatkUp", false);
         animator.SetBool("isHatkDown", false);
         playerAudio.StopSound();
-        playerMovement.ChangeState(PlayerState.Idle);
+        player.ChangeMovementState(Player.MovementState.Idle);
     }
 
 
     //attack damage for quick and heavy depending on direction
     public void DealDamageQuickAttack()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointHorizontal.position, PlayerStats.Instance.weaponRange, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointHorizontal.position, player.weaponRange, enemyLayer);
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
         }
     }
 
     public void DealDamageQuickAttackUp()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointUp.position, PlayerStats.Instance.weaponRange, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointUp.position, player.weaponRange, enemyLayer);
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
         }
     }
 
     public void DealDamageQuickAttackDown()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointDown.position, PlayerStats.Instance.weaponRange, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointDown.position, player.weaponRange, enemyLayer);
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
         }
     }
 
     public void DealDamageHeavyAttack()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointHorizontal.position, PlayerStats.Instance.weaponRange, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointHorizontal.position, player.weaponRange, enemyLayer);
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
         }
     }
 
     public void DealDamageHeavyAttackUp()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointUp.position, PlayerStats.Instance.weaponRange, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointUp.position, player.weaponRange, enemyLayer);
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
         }
     }
 
     public void DealDamageHeavyAttackDown()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointDown.position, PlayerStats.Instance.weaponRange, enemyLayer);
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPointDown.position, player.weaponRange, enemyLayer);
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, PlayerStats.Instance.knockBackForce, PlayerStats.Instance.knockBackTime, PlayerStats.Instance.knockBackStun);
+            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
         }
     }
 
@@ -185,9 +186,9 @@ public class PlayerCombat : MonoBehaviour
     {
         //sword attack ranges
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPointHorizontal.position, PlayerStats.Instance.weaponRange);
-        Gizmos.DrawWireSphere(attackPointDown.position, PlayerStats.Instance.weaponRange);
-        Gizmos.DrawWireSphere(attackPointUp.position, PlayerStats.Instance.weaponRange);
+        Gizmos.DrawWireSphere(attackPointHorizontal.position, player.weaponRange);
+        Gizmos.DrawWireSphere(attackPointDown.position, player.weaponRange);
+        Gizmos.DrawWireSphere(attackPointUp.position, player.weaponRange);
     }
 
 

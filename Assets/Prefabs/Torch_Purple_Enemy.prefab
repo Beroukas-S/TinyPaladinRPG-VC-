@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb4c0d3080fe3d488065f61a53edbe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
   damage: 1
   attackPoint: {fileID: 357906742580848166}
   weaponRange: 2
@@ -314,12 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 691059af78233c444a098e0e4028ce0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  attackRange: 1.2
-  attackCD: 1.5
-  playerDetectDistance: 4
-  wanderTime: 0.5
-  waitTime: 2
+  enemy: {fileID: 11400000, guid: e3589613f350a4f4ea1a635332aa9adc, type: 2}
   detectionPoint: {fileID: 46604248878160629}
   playerLayer:
     serializedVersion: 2
@@ -337,9 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0698db5fcf2d6a748a3d71b94dfb8ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expReward: 5
-  currentHP: 2
-  maxHP: 3
+  enemy: {fileID: 11400000, guid: e3589613f350a4f4ea1a635332aa9adc, type: 2}
   gold: {fileID: 9176913866937988657, guid: 01dea08831d8f4a44b6d32483b081952, type: 3}
   enemyRenderer: {fileID: 5683954434041719076}
   wiggleTime: 0.05

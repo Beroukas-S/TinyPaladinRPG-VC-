@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy_Combat : MonoBehaviour
 {
+    [SerializeField] private Player player;
     public float damage = 1;
     public Transform attackPoint;
     public float weaponRange;
@@ -30,8 +31,8 @@ public class Enemy_Combat : MonoBehaviour
         if (hits.Length > 0)
         {
             goblinAudio.ThrowSound();
-            hits[0].GetComponent<PlayerHealth>().ChangeHP(-damage);
-            if (PlayerStats.Instance.currentHP > 0)
+            hits[0].GetComponent<PlayerHealthMono>().ChangeHP(-damage);
+            if (player.currentHP > 0)
             {
                 hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockBackForce, knockTime);
             }

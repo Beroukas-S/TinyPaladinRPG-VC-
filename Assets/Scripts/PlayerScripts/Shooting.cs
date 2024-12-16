@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
-
+    [SerializeField] private Player player;
     private Camera cam;
     private Vector3 mousePos;
     public GameObject projectile;
@@ -37,7 +37,7 @@ public class Shooting : MonoBehaviour
             timer -= Time.deltaTime;
         }
 
-        hasSpell = PlayerStats.Instance.fireball;
+        hasSpell = player.fireball;
 
         //shoot
         if (Input.GetButtonDown("Fireball") && timer <=0)
@@ -51,7 +51,7 @@ public class Shooting : MonoBehaviour
                 var MyScript = projectileCreate.GetComponent<SpriteRenderer>();
                 MyScript.sortingOrder = 15;
 
-                timer = PlayerStats.Instance.fireballCD;
+                timer = player.fireballCD;
             }
         }
 

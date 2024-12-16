@@ -2,28 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static PlayerHealth;
 
 public class Enemy_Movement : MonoBehaviour
 {
-    public float speed;
-    public float attackRange;
-    public float attackCD;
-    public float playerDetectDistance;
-    public float wanderTime;
-    public float waitTime;
+    [SerializeField] private Enemy enemy;
+    //public float speed;
+    //public float attackRange;
+    //public float attackCD;
+    //public float playerDetectDistance;
+    //public float wanderTime;
+    //public float waitTime;
+
     public Transform detectionPoint;
     public LayerMask playerLayer;
     public Transform enemyCanvasTransform;
+
     private float attackCDtimer;
     private float faceDirection;
-    private EnemyState enemyState;
+
+
     private float timerBeforeWander;
 
 
     private Rigidbody2D rb;
     private Transform player;
     private Animator animat;
+    public EnemyState enemyState;
 
 
 
@@ -98,7 +102,7 @@ public class Enemy_Movement : MonoBehaviour
         }
 
         Vector2 direction = (player.position - transform.position).normalized;
-        rb.velocity = direction * speed;
+        rb.velocity = direction * enemy.speed;
     }
 
     private void Flip()
@@ -110,23 +114,23 @@ public class Enemy_Movement : MonoBehaviour
 
     private void CheckForPlayer()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, playerDetectDistance, playerLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(detectionPoint.position, enemy.playerDetectDistance, playerLayer);
 
         if (hits.Length > 0)
         {
             player = hits[0].transform;
 
             //Range Check
-            if (Vector2.Distance(transform.position, player.position) <= attackRange && attackCDtimer <= 0)
+            if (Vector2.Distance(transform.position, player.position) <= enemy.attackRange && attackCDtimer <= 0)
             {
-                attackCDtimer = attackCD;
+                attackCDtimer = enemy.attackCD;
                 ChangeState(EnemyState.Attacking);
             }
-            else if ((Vector2.Distance(transform.position, player.position) > attackRange && attackCDtimer > 0) && enemyState != EnemyState.Attacking)
+            else if ((Vector2.Distance(transform.position, player.position) > enemy.attackRange && attackCDtimer > 0) && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Idle);
             }
-            else if (Vector2.Distance(transform.position, player.position) > attackRange && enemyState != EnemyState.Attacking)
+            else if (Vector2.Distance(transform.position, player.position) > enemy.attackRange && enemyState != EnemyState.Attacking)
             {
                 ChangeState(EnemyState.Moving);
             }
@@ -186,7 +190,7 @@ public class Enemy_Movement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(detectionPoint.position, playerDetectDistance);
+        Gizmos.DrawWireSphere(detectionPoint.position, enemy.playerDetectDistance);
     }
 
 
@@ -196,9 +200,9 @@ public class Enemy_Movement : MonoBehaviour
         Vector3 randPosition = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 1f);//.normalized;
         Vector2 randDirection = (randPosition - transform.position).normalized;
 
-        rb.velocity = randDirection * (speed/2);
-        timerBeforeWander = waitTime;
-        StartCoroutine(WanderTimer(wanderTime));
+        rb.velocity = randDirection * (enemy.speed /2);
+        timerBeforeWander = enemy.waitTime;
+        StartCoroutine(WanderTimer(enemy.wanderTime));
 
     }
     
@@ -209,13 +213,14 @@ public class Enemy_Movement : MonoBehaviour
         ChangeState(EnemyState.Idle);
     }
 
+    public enum EnemyState
+    {
+        Idle,
+        Moving,
+        Attacking,
+        KnockedBack,
+        Wandering
+    }
+
 }
 
-public enum EnemyState
-{
-    Idle,
-    Moving,
-    Attacking,
-    KnockedBack,
-    Wandering
-}

@@ -4,9 +4,9 @@ using UnityEngine;
 using TMPro;
 using System.Threading.Tasks;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealthMono : MonoBehaviour
 {
-
+    [SerializeField] private Player player;
     public TMP_Text healthText;
     public Animator hpDamageAnim;
     public Animator animator;
@@ -15,34 +15,33 @@ public class PlayerHealth : MonoBehaviour
     public new SpriteRenderer renderer;
     [SerializeField] private float wiggleTime;
 
-    public HealthState healthState;
 
     public void Start()
     {
         UpdateCanvas();
-        ChangeState(HealthState.Normal);
+        player.ChangeHealthState(Player.HealthState.Normal);
         playermovent = GetComponent<PlayerMovement>();
-        PlayerStats.Instance.currentHP = PlayerStats.Instance.maxHP;
+        player.currentHP = player.maxHP;
         renderer = GetComponent<SpriteRenderer>();
     }
 
     public void ChangeHP(float amount)
     {
-        if (healthState == HealthState.Normal)
+        if (player.healthState == Player.HealthState.Normal)
         {
-            if (PlayerStats.Instance.currentHP + amount > PlayerStats.Instance.maxHP)
+            if (player.currentHP + amount > player.maxHP)
             {
-                PlayerStats.Instance.currentHP = PlayerStats.Instance.maxHP;
+                player.currentHP = player.maxHP;
             }
-            else if (PlayerStats.Instance.currentHP + amount > 0)
+            else if (player.currentHP + amount > 0)
             {
-                PlayerStats.Instance.currentHP += amount;
+                player.currentHP += amount;
             }
-            else if (PlayerStats.Instance.currentHP + amount <= 0)
+            else if (player.currentHP + amount <= 0)
             {
-                PlayerStats.Instance.currentHP = 0;
-                ChangeState(HealthState.Dead);
-                playermovent.ChangeState(PlayerState.Dead);
+                player.currentHP = 0;
+                player.ChangeHealthState(Player.HealthState.Dead);
+                player.ChangeMovementState(Player.MovementState.Dead);
                 playerAudio.DeathSound();
                 playermovent.rb.velocity = Vector2.zero;
                 animator.SetTrigger("onDeath");
@@ -57,14 +56,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateCanvas()
     {
-        healthText.text = "HEALTH " + PlayerStats.Instance.currentHP + "/" + PlayerStats.Instance.maxHP;
+        healthText.text = "HEALTH " + player.currentHP + "/" + player.maxHP;
     }
 
-
-    public void ChangeState(HealthState newState)
-    {
-        healthState = newState;
-    }
 
     public void GetHitRed()
     {
@@ -89,13 +83,6 @@ public class PlayerHealth : MonoBehaviour
         player.SetActive(false);
     }
 
-    public enum HealthState
-    {
-        Normal,
-        Immune,
-        Vulnerable,
-        Dead
-    }
 
 
 

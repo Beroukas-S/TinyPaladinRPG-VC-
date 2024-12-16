@@ -19,10 +19,13 @@ public class Objective : ScriptableObject
 
     public void ProgressObjective()
     {
-        parentQuest.objectiveGoalProgress++;
-        if (parentQuest.objectiveGoalProgress == parentQuest.objectiveGoal)
-        { 
-            CompleteObjective();
+        if (parentQuest.active == true)
+        {
+            parentQuest.objectiveGoalProgress++;
+            if (parentQuest.objectiveGoalProgress == parentQuest.objectiveGoal)
+            {
+                CompleteObjective();
+            }
         }
     }
 }

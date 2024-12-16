@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
+    [SerializeField] private Player player;
     private Camera cam;
     private Vector3 mousePos;
     private Rigidbody2D rb;
@@ -51,7 +52,7 @@ public class ProjectileScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Enemy_Health>().ChangeHP(-PlayerStats.Instance.fireballDamage);
+            collision.gameObject.GetComponent<Enemy_Health>().ChangeHP(-player.fireballDamage);
             rb.velocity = Vector2.zero;
             transform.rotation = Quaternion.Euler(0, 0, 0);
             transform.position = collision.transform.position;

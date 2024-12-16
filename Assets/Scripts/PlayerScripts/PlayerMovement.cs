@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Player player;
     public int faceDirection = 1;
 
 
@@ -25,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerBlock block;
 
-    public PlayerState playerState;
 
     public PlayerAudio playerAudio;
     public bool immobilized = false;
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         mouseDirection = GetComponent<MouseDirection>();
-        ChangeState(PlayerState.Idle);
+        player.ChangeMovementState(Player.MovementState.Idle);
     }
 
 
@@ -51,10 +52,10 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (immobilized)
-        { 
-            ChangeState(PlayerState.Idle);
+        {
+            player.ChangeMovementState(Player.MovementState.Idle);
         }
-        if (isKnocked == false && playerState != PlayerState.Dead && !immobilized) 
+        if (isKnocked == false && player.moveState != Player.MovementState.Dead && !immobilized) 
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -67,17 +68,17 @@ public class PlayerMovement : MonoBehaviour
             animat.SetFloat("horizontal", Mathf.Abs(horizontal));
             animat.SetFloat("vertical", Mathf.Abs(vertical));
     
-            rb.velocity = new Vector2(horizontal, vertical) * PlayerStats.Instance.speed;
+            rb.velocity = new Vector2(horizontal, vertical) * player.speed;
             if (rb.velocity != Vector2.zero)
             {
-                ChangeState(PlayerState.Moving);
+                player.ChangeMovementState(Player.MovementState.Moving);
             }
-            else if (playerState != PlayerState.Attacking)
+            else if (player.moveState != Player.MovementState.Attacking)
             {
-                ChangeState(PlayerState.Idle);
+                player.ChangeMovementState(Player.MovementState.Idle);
             }
         }
-        if (playerState == PlayerState.Moving)
+        if (player.moveState == Player.MovementState.Moving)
         {
             playerAudio.StepSound();
         }
@@ -97,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
     public void KnockBack(Transform enemy,float knockBackForce,float duration)
     {
         isKnocked = true;
-        ChangeState(PlayerState.KnockedBack);
+        player.ChangeMovementState(Player.MovementState.KnockedBack);
         block.BlockEnd();
         Vector2 direction = (transform.position - enemy.position).normalized;
         rb.velocity = direction * knockBackForce;
@@ -110,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(time);
         rb.velocity = Vector2.zero;
         isKnocked = false;
-        ChangeState(PlayerState.Idle);
+        player.ChangeMovementState(Player.MovementState.Idle);
 
     }
 
@@ -121,20 +122,20 @@ public class PlayerMovement : MonoBehaviour
         if (!secondAttack && Input.GetMouseButtonDown(0))
         {
             CheckQuickAttack();
-            if (playerState == PlayerState.Blocking)
+            if (player.moveState == Player.MovementState.Blocking)
             {
                 block.BlockEnd();
             }
-            ChangeState(PlayerState.Attacking);
+            player.ChangeMovementState(Player.MovementState.Attacking);
         }
         else if (secondAttack && Input.GetMouseButtonDown(0))
         { 
             CheckHeavyAttack();
-            if (playerState == PlayerState.Blocking)
+            if (player.moveState == Player.MovementState.Blocking)
             {
                 block.BlockEnd();
             }
-            ChangeState(PlayerState.Attacking);
+            player.ChangeMovementState(Player.MovementState.Attacking);
         }
     }
 
@@ -218,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void CheckBlock()
     {
-        if (Input.GetMouseButton(1) && playerState != PlayerState.Attacking && playerState != PlayerState.KnockedBack)
+        if (Input.GetMouseButton(1) && player.moveState != Player.MovementState.Attacking && player.moveState != Player.MovementState.KnockedBack)
         {
             block.Block();
         }
@@ -228,19 +229,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void ChangeState(PlayerState newState)
-    {
-        playerState = newState;
-    }
-
+    
 }
 
-public enum PlayerState
-{ 
-    Idle,
-    Moving,
-    KnockedBack,
-    Attacking,
-    Blocking,
-    Dead
-}
+
