@@ -18,7 +18,7 @@ MonoBehaviour:
   goldReward: 0
   xpReward: 10
   active: 0
-  completed: 0
+  completed: 1
   questDescription: Talk to the village leader.
   objectiveGoalProgress: 0
   objectiveGoal: 1
