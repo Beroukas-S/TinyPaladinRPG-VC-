@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LeaderTalk1 : MonoBehaviour
+public class LeaderTalk : MonoBehaviour
 {
     [SerializeField] private Player player;
     [SerializeField] private CircleCollider2D circleCollider;

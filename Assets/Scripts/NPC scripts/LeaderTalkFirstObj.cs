@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class LeaderTalk : MonoBehaviour
+public class LeaderTalkFirstObj : MonoBehaviour
 {
     [SerializeField] public Objective Objective;
 
