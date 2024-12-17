@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 384252844691400239}
   - component: {fileID: 5208488102025252897}
   - component: {fileID: 1097384407497753174}
+  - component: {fileID: 5915983380434708345}
   m_Layer: 8
   m_Name: Torch_Purple_Enemy
   m_TagString: Enemy
@@ -321,6 +322,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   enemyCanvasTransform: {fileID: 6888618049539493674}
+  enemyChase: {fileID: 5915983380434708345}
+  enemyState: 0
 --- !u!114 &5292378439848364257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +463,19 @@ MonoBehaviour:
   audioSource: {fileID: 5208488102025252897}
   throwSound: {fileID: 8300000, guid: 3d4057d1ea835f04f9baf761b1bade74, type: 3}
   blockedSound: {fileID: 8300000, guid: 80a96df325f645649817920c610caeda, type: 3}
+--- !u!114 &5915983380434708345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1668554588066875776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce6d962b5695ac46ab6ac2e47e096da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 5384754716061919689}
 --- !u!1 &2088088894107611853
 GameObject:
   m_ObjectHideFlags: 0

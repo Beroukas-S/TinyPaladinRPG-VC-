@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Enemy_Movement;
+using static EnemyBehaviour;
 
 public class Enemy_Knockback : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Enemy_Movement enemyMovement;
+    private EnemyBehaviour enemyMovement;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        enemyMovement = GetComponent<Enemy_Movement>();
+        enemyMovement = GetComponent<EnemyBehaviour>();
     }
 
     public void KnockBack(Transform playerTransform, float force, float duration, float stuntime)

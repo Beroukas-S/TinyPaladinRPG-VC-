@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy_Movement : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField] private Enemy enemy;
     //public float speed;
@@ -27,6 +27,8 @@ public class Enemy_Movement : MonoBehaviour
     private Rigidbody2D rb;
     private Transform player;
     private Animator animat;
+    [SerializeField] private EnemyMovement enemyChase;
+
     public EnemyState enemyState;
 
 
@@ -71,7 +73,7 @@ public class Enemy_Movement : MonoBehaviour
             CheckForPlayer();
             if (enemyState == EnemyState.Moving)
             {
-                Chase();
+                enemyChase.EnableChase();
             }
             else if (enemyState == EnemyState.Attacking)
             {
@@ -86,7 +88,7 @@ public class Enemy_Movement : MonoBehaviour
                 }
                 else
                 {
-                    Wander();
+                    enemyChase.EnableWander();
                 }
             }
         }
@@ -94,7 +96,7 @@ public class Enemy_Movement : MonoBehaviour
 
     }
 
-    void Chase()
+    public void Chase()
     {
         if (player.position.x > transform.position.x && faceDirection < 0 || player.position.x < transform.position.x && faceDirection > 0)
         {
@@ -194,7 +196,7 @@ public class Enemy_Movement : MonoBehaviour
     }
 
 
-    private void Wander()
+    public void Wander()
     {
         ChangeState(EnemyState.Wandering);
         Vector3 randPosition = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 1f);//.normalized;
