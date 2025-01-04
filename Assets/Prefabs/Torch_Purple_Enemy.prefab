@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
-  damage: 1
+  enemy: {fileID: 11400000, guid: e3589613f350a4f4ea1a635332aa9adc, type: 2}
   attackPoint: {fileID: 357906742580848166}
   weaponRange: 2
   knockBackForce: 10
@@ -476,6 +476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMovement: {fileID: 5384754716061919689}
+  disabledScript: 0
 --- !u!1 &2088088894107611853
 GameObject:
   m_ObjectHideFlags: 0

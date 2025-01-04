@@ -22,10 +22,10 @@ MonoBehaviour:
   statScaling: 0.1
   fireballDamage: 2
   fireballCD: 2
-  currentHP: 15
-  maxHP: 15
+  currentHP: 0
+  maxHP: 30
   speed: 5
-  gold: 50
+  gold: 52
   fireball: 0
-  healthState: 0
-  moveState: 0
+  healthState: 3
+  moveState: 5

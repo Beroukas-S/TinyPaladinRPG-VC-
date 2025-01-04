@@ -15,10 +15,10 @@ MonoBehaviour:
   attackRange: 4
   attackCD: 3
   playerDetectDistance: 5
+  attackDamage: 4
   speed: 4
   wanderTime: 0.5
   waitTime: 2
   currentHP: 0
   maxHP: 3
   expReward: 3
-  enemyState: 0

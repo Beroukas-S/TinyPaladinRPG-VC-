@@ -578,12 +578,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c21f5068aba91ab42857b648c55e9c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: d95011c1e80242d4ca77559ebb3949ab, type: 2}
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
   attackPoint: {fileID: 1206601387529779881}
-  attackRange: 4
-  dynamite: {fileID: 7686425656107999755, guid: 4481cf5fddecf5047adc8c82b6486e19, type: 3}
+  projectile: {fileID: 7686425656107999755, guid: 4481cf5fddecf5047adc8c82b6486e19, type: 3}
   goblinAudio: {fileID: 7976967298210833554}
 --- !u!114 &303466101698560240
 MonoBehaviour:
@@ -757,6 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMovement: {fileID: 2264925819086289202}
+  disabledScript: 0
 --- !u!1 &7790528603475349455
 GameObject:
   m_ObjectHideFlags: 0
