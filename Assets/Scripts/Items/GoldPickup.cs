@@ -15,7 +15,7 @@ public class PickupGold : MonoBehaviour
 
     private void Start()
     {
-        timer = 1;
+        timer = 0.5f;
     }
 
     private void Update()

@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 1097384407497753174}
   - component: {fileID: 5915983380434708345}
   m_Layer: 8
-  m_Name: Torch_Purple_Enemy
+  m_Name: Torch Goblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,6 +317,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: e3589613f350a4f4ea1a635332aa9adc, type: 2}
+  wanderTime: 1
+  waitTime: 0
   detectionPoint: {fileID: 46604248878160629}
   playerLayer:
     serializedVersion: 2
@@ -337,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: e3589613f350a4f4ea1a635332aa9adc, type: 2}
+  currentHP: 0
   gold: {fileID: 9176913866937988657, guid: 01dea08831d8f4a44b6d32483b081952, type: 3}
   enemyRenderer: {fileID: 5683954434041719076}
   wiggleTime: 0.05

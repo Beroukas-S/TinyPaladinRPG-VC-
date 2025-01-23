@@ -54,7 +54,7 @@ public class Arrow : MonoBehaviour
             isPlayer = false;
             HitSomething(isPlayer);
         }
-        if (isPlayer)
+        if (timer > 0)
         { 
             timer -= Time.deltaTime;
         }

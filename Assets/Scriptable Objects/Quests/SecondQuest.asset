@@ -18,7 +18,7 @@ MonoBehaviour:
   goldReward: 20
   xpReward: 20
   active: 0
-  completed: 1
+  completed: 0
   questDescription: Kill 10 goblins.
   objectiveGoalProgress: 2
   objectiveGoal: 2

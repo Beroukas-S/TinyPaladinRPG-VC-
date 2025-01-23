@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+//using Random = System.Random;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class EnemyBehaviour : MonoBehaviour
     //public float attackRange;
     //public float attackCD;
     //public float playerDetectDistance;
-    //public float wanderTime;
-    //public float waitTime;
+    public float wanderTime;
+    public float waitTime;
 
     public Transform detectionPoint;
     public LayerMask playerLayer;
@@ -35,6 +36,7 @@ public class EnemyBehaviour : MonoBehaviour
 
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +44,7 @@ public class EnemyBehaviour : MonoBehaviour
         animat = GetComponent<Animator>();
         ChangeState(EnemyState.Idle);
         faceDirection = transform.localScale.x;
-        timerBeforeWander = 2;
+        timerBeforeWander = Random.Range(2f, 5f);
     }
 
     // Update is called once per frame
@@ -199,12 +201,13 @@ public class EnemyBehaviour : MonoBehaviour
     public void Wander()
     {
         ChangeState(EnemyState.Wandering);
-        Vector3 randPosition = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), 1f);//.normalized;
+        Vector3 randPosition = new Vector3(Random.Range(-10000.0f, 10000.0f), Random.Range(-10000.0f, 10000.0f), 1f);//.normalized;
+        
         Vector2 randDirection = (randPosition - transform.position).normalized;
 
         rb.velocity = randDirection * (enemy.speed /2);
-        timerBeforeWander = enemy.waitTime;
-        StartCoroutine(WanderTimer(enemy.wanderTime));
+        timerBeforeWander = Random.Range(2f, 4f);
+        StartCoroutine(WanderTimer(wanderTime));
 
     }
     
