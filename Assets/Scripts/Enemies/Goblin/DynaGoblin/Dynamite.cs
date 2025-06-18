@@ -40,19 +40,8 @@ public class Dynamite : MonoBehaviour
         playerDistance = Vector3.Distance(startingPlayerPosition, transform.position);
         if (playerDistance <= 1)
         {
-            //timer = 2;
             rb.velocity = Vector2.zero;
-            //if (timer > 0)
-            //{
-            //    timer -= Time.deltaTime;
-            //}
-            //else
-            //{
-            //    rb.velocity = Vector2.zero;
-            //    animator.SetBool("isBoom", true);
-            //}
             StartCoroutine(Fuse(timer));
-
         }
     }
 

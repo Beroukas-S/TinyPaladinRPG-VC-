@@ -23,7 +23,7 @@ public class LeaderTalk : MonoBehaviour
     [SerializeField] private TextMeshProUGUI messageText;
 
     [SerializeField] private UnityEvent OnPressedY1;
-    //[SerializeField] private UnityEvent OnPressedY2;
+    [SerializeField] private UnityEvent OnPressedY2;
 
 
 
@@ -43,10 +43,10 @@ public class LeaderTalk : MonoBehaviour
             {
                 OnPressedY1.Invoke();
             }
-            //if (secondQuest.completed)
-            //{
-            //    OnPressedY2.Invoke();
-            //}
+            if (secondQuest.completed)
+            {
+                OnPressedY2.Invoke();
+            }
         }
     }
 

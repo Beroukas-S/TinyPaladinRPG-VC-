@@ -7,16 +7,14 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField] private Enemy enemy;
-    //public float speed;
-    //public float attackRange;
-    //public float attackCD;
-    //public float playerDetectDistance;
+
     public float wanderTime;
     public float waitTime;
 
     public Transform detectionPoint;
     public LayerMask playerLayer;
     public Transform enemyCanvasTransform;
+    public bool gizmosOn;
 
     private float attackCDtimer;
     private float faceDirection;
@@ -31,11 +29,6 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] private EnemyMovement enemyChase;
 
     public EnemyState enemyState;
-
-
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -62,10 +55,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
 
         //always checking for cooldown
-
-
         //core behaviour
-
         if (enemyState != EnemyState.KnockedBack && enemyState != EnemyState.Wandering)
         {
             if (attackCDtimer > 0)
@@ -94,8 +84,6 @@ public class EnemyBehaviour : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     public void Chase()
@@ -193,8 +181,11 @@ public class EnemyBehaviour : MonoBehaviour
     //detection point range
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(detectionPoint.position, enemy.playerDetectDistance);
+        if (gizmosOn == true)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(detectionPoint.position, enemy.playerDetectDistance);
+        }
     }
 
 

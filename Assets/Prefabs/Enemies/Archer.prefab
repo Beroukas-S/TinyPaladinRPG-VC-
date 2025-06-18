@@ -190,13 +190,13 @@ GameObject:
   - component: {fileID: 3072006501534819344}
   - component: {fileID: 4599444160057859000}
   - component: {fileID: 1826136503285700263}
+  - component: {fileID: 139755761585280512}
+  - component: {fileID: 7161532460855056478}
+  - component: {fileID: 4659358353883938857}
   - component: {fileID: 7955712420650249125}
   - component: {fileID: 296593990928849507}
-  - component: {fileID: 7161532460855056478}
-  - component: {fileID: 139755761585280512}
   - component: {fileID: 1869882495557070960}
   - component: {fileID: 8830429639703469951}
-  - component: {fileID: 4659358353883938857}
   - component: {fileID: 2974910666062791628}
   m_Layer: 8
   m_Name: Archer
@@ -357,6 +357,54 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &139755761585280512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258446819960626237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21f5068aba91ab42857b648c55e9c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: a67639b1f35db564ca28d49c2b8cc9eb, type: 2}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackPoint: {fileID: 6076287868345620794}
+  projectile: {fileID: 8300627836656123334, guid: cd317d425abba8148b500c4e52af021a, type: 3}
+  goblinAudio: {fileID: 1869882495557070960}
+--- !u!114 &7161532460855056478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258446819960626237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0698db5fcf2d6a748a3d71b94dfb8ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 11400000, guid: a67639b1f35db564ca28d49c2b8cc9eb, type: 2}
+  currentHP: 0
+  gold: {fileID: 9176913866937988657, guid: 01dea08831d8f4a44b6d32483b081952, type: 3}
+  enemyRenderer: {fileID: 375698528188764093}
+  wiggleTime: 0.05
+--- !u!114 &4659358353883938857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4258446819960626237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c48fa915b42d7c747b35f017c77a0f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7955712420650249125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +425,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   enemyCanvasTransform: {fileID: 6138276277813170710}
+  gizmosOn: 0
   enemyChase: {fileID: 296593990928849507}
   enemyState: 0
 --- !u!114 &296593990928849507
@@ -393,42 +442,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMovement: {fileID: 7955712420650249125}
   disabledScript: 0
---- !u!114 &7161532460855056478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4258446819960626237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0698db5fcf2d6a748a3d71b94dfb8ee7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: a67639b1f35db564ca28d49c2b8cc9eb, type: 2}
-  currentHP: 0
-  gold: {fileID: 9176913866937988657, guid: 01dea08831d8f4a44b6d32483b081952, type: 3}
-  enemyRenderer: {fileID: 375698528188764093}
-  wiggleTime: 0.05
---- !u!114 &139755761585280512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4258446819960626237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c21f5068aba91ab42857b648c55e9c81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: a67639b1f35db564ca28d49c2b8cc9eb, type: 2}
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  attackPoint: {fileID: 6076287868345620794}
-  projectile: {fileID: 8300627836656123334, guid: cd317d425abba8148b500c4e52af021a, type: 3}
-  goblinAudio: {fileID: 1869882495557070960}
 --- !u!114 &1869882495557070960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,18 +553,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4659358353883938857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4258446819960626237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c48fa915b42d7c747b35f017c77a0f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2974910666062791628
 MonoBehaviour:
   m_ObjectHideFlags: 0

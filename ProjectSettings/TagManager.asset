@@ -9,6 +9,10 @@ TagManager:
   - Canvas
   - Terrain
   - Quests
+  - SceneEntryMenu
+  - SceneEntryGoblins
+  - SceneEntryWarlord
+  - SceneEntryKnights
   layers:
   - Default
   - TransparentFX

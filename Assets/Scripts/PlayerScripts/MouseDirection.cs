@@ -36,19 +36,19 @@ public class MouseDirection : MonoBehaviour
         //attackDirection 1-4, 1 right, 2 left, 3 up, 4 down
         if (mouseX > 0 && Mathf.Abs(mouseX) > Mathf.Abs(mouseY))
         {
-            attackDirection = 1; // deksia
+            attackDirection = 1; //Δεξιά
         }
         else if (mouseY > 0 && Mathf.Abs(mouseX) < Mathf.Abs(mouseY))
         {
-            attackDirection = 3; //panw 
+            attackDirection = 3; //Πάνω 
         }
         else if (mouseX < 0 && Mathf.Abs(mouseX) > Mathf.Abs(mouseY))
         {
-            attackDirection = 2; //aristera
+            attackDirection = 2; //Αριστερά
         }
         else if (mouseY < 0 && Mathf.Abs(mouseX) < Mathf.Abs(mouseY))
         {
-            attackDirection = 4; //katw
+            attackDirection = 4; //Κάτω
         }
     }
 

@@ -11,40 +11,7 @@ public class PlayerStatsManager : MonoBehaviour
     private float diff;
     [SerializeField] private Objective objectiveSecond;
     [SerializeField] public int enemyKillCount;
-    //[Header("Combat Stats")]
-    //public float meleeDamage;
-    //public float weaponRange;
-    //public float knockBackForce;
-    //public float knockBackTime;
-    //public float knockBackStun;
-    //public float attackCD;
-    //public float fireballDamage;
-    //public float fireballCD;
-    //public float blockCD;
-    //public float statScaling;
-    ////public HealthState healthState;
 
-    //[Header("Health")]
-    //public float currentHP;
-    //public float maxHP;
-
-    //[Header("Movement")]
-    //public float speed;
-
-    //[Header("Gold")]
-    //public float gold;
-
-    //[Header ("Skills")]
-    //public bool fireball = false;
-
-    //private void Awake()
-    //{
-    //    if (Instance == null)
-    //        Instance = this;
-    //    else 
-    //        Destroy(gameObject);
-    //        player.currentHP = player.maxHP;
-    //}
 
     private void Update()
     {

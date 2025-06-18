@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -14,6 +16,7 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPointHorizontal;
     public Transform attackPointUp;
     public Transform attackPointDown;
+    public bool gismosOn;
 
     public LayerMask enemyLayer;
 
@@ -120,8 +123,18 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            if (enemies[0].GetComponent<Enemy_Health>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<BossHealth>() != null)
+            {
+                enemies[0].GetComponent<BossHealth>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<Enemy_Knockback>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            }
         }
     }
 
@@ -131,8 +144,18 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            if (enemies[0].GetComponent<Enemy_Health>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<BossHealth>() != null)
+            {
+                enemies[0].GetComponent<BossHealth>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<Enemy_Knockback>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            }
         }
     }
 
@@ -142,8 +165,18 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            if (enemies[0].GetComponent<Enemy_Health>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<BossHealth>() != null)
+            {
+                enemies[0].GetComponent<BossHealth>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<Enemy_Knockback>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            }
         }
     }
 
@@ -153,8 +186,18 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            if (enemies[0].GetComponent<Enemy_Health>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<BossHealth>() != null)
+            {
+                enemies[0].GetComponent<BossHealth>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<Enemy_Knockback>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            }
         }
     }
 
@@ -164,8 +207,18 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            if (enemies[0].GetComponent<Enemy_Health>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<BossHealth>() != null)
+            {
+                enemies[0].GetComponent<BossHealth>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<Enemy_Knockback>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            }
         }
     }
 
@@ -175,8 +228,18 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemies.Length > 0)
         {
-            enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
-            enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            if (enemies[0].GetComponent<Enemy_Health>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Health>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<BossHealth>() != null)
+            {
+                enemies[0].GetComponent<BossHealth>().ChangeHP(-player.meleeDamage);
+            }
+            if (enemies[0].GetComponent<Enemy_Knockback>() != null)
+            {
+                enemies[0].GetComponent<Enemy_Knockback>().KnockBack(transform, player.knockBackForce, player.knockBackTime, player.knockBackStun);
+            }
         }
     }
 
@@ -185,10 +248,13 @@ public class PlayerCombat : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         //sword attack ranges
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPointHorizontal.position, player.weaponRange);
-        Gizmos.DrawWireSphere(attackPointDown.position, player.weaponRange);
-        Gizmos.DrawWireSphere(attackPointUp.position, player.weaponRange);
+        if (gismosOn == true)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(attackPointHorizontal.position, player.weaponRange);
+            Gizmos.DrawWireSphere(attackPointDown.position, player.weaponRange);
+            Gizmos.DrawWireSphere(attackPointUp.position, player.weaponRange);
+        }
     }
 
 

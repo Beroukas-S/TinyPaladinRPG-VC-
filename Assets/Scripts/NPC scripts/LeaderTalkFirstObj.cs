@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class LeaderTalkFirstObj : MonoBehaviour
 {
-    [SerializeField] public Objective Objective;
+    [SerializeField] public Objective Objective1;
 
 
     [SerializeField] private QuestSystem questSystem;
@@ -14,7 +14,7 @@ public class LeaderTalkFirstObj : MonoBehaviour
 
     public void TalkedForFirstObj()
     {
-        Objective.CompleteObjective();
+        Objective1.CompleteObjective();
         questSystem.ReceiveNewQuest(secondQuest);
     }
 }

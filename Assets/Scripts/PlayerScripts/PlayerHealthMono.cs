@@ -49,9 +49,7 @@ public class PlayerHealthMono : MonoBehaviour
             GetHitRed();
             hpDamageAnim.Play("Text_Damage");
             UpdateCanvas();
-
         }
-
     }
 
     public void UpdateCanvas()

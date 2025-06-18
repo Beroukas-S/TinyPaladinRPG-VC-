@@ -2963,7 +2963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4b9ac3e5b212e43bdb51f2bbc32605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeQuest: {fileID: 0}
+  questTracking: {fileID: 11400000, guid: d15be3b7a801ca0468339f424697a0fc, type: 2}
   questTitleText: {fileID: 1332200506039358263}
   goalText: {fileID: 4474249957095851025}
   progressText: {fileID: 6207764570371814482}
@@ -6120,8 +6120,8 @@ GameObject:
   - component: {fileID: 8303884161901803692}
   - component: {fileID: 1569743325824840034}
   - component: {fileID: 8459350185049920372}
-  - component: {fileID: 2980015302165368584}
   - component: {fileID: 4523585705995646756}
+  - component: {fileID: 2980015302165368584}
   - component: {fileID: 9002124717710416870}
   - component: {fileID: 4660245779569661310}
   - component: {fileID: 7131568699225532384}
@@ -6274,6 +6274,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &4523585705995646756
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8387762494533585503}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9b659d57b4867e34db1df3a44f400ca9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2980015302165368584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6300,27 +6321,6 @@ MonoBehaviour:
   block: {fileID: 1266520606922877823}
   playerAudio: {fileID: 4360170803256593132}
   immobilized: 0
---- !u!95 &4523585705995646756
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8387762494533585503}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9b659d57b4867e34db1df3a44f400ca9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &9002124717710416870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6371,6 +6371,7 @@ MonoBehaviour:
   attackPointHorizontal: {fileID: 4268408737448130112}
   attackPointUp: {fileID: 1275985088744765229}
   attackPointDown: {fileID: 3846781551632490542}
+  gismosOn: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -6629,6 +6630,9 @@ MonoBehaviour:
   lastScene: {fileID: 11400000, guid: 46ee0ffc29437064eb59b5d06c668311, type: 2}
   newScene: {fileID: 11400000, guid: 2eb4bc0ffb997d14a9d031bd033f1b43, type: 2}
   playerTransform: {fileID: 8906461963921956792}
+  canvasTransform: {fileID: 4047111541755181178}
+  projectileTransform: {fileID: 8406492910249037143}
+  entryPoint: {fileID: 0}
 --- !u!1 &8403430076067447172
 GameObject:
   m_ObjectHideFlags: 0

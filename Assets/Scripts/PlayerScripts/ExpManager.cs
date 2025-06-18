@@ -37,12 +37,14 @@ public class ExpManager : MonoBehaviour
     private void OnEnable()
     {
         Enemy_Health.OnEnemyDefeated += GainExp;
+        BossHealth.OnEnemyDefeated += GainExp;
         QuestSystem.OnQuestComplitionStatic += QuestRewards;
     }
 
     private void OnDisable()
     {
         Enemy_Health.OnEnemyDefeated -= GainExp;
+        BossHealth.OnEnemyDefeated -= GainExp;
         QuestSystem.OnQuestComplitionStatic -= QuestRewards;
     }
 
@@ -55,18 +57,29 @@ public class ExpManager : MonoBehaviour
 
     public void GainExp(int amount)
     { 
+        //currentExp += amount;
+        //if (currentExp >= expToLevel)
+        //{
+        //    LevelUp();
+        //}
+        //UpdateUI();
+
         currentExp += amount;
-        if (currentExp >= expToLevel)
-        {
+        while (currentExp >= expToLevel)
+        { 
+            currentExp -= expToLevel;
             LevelUp();
+            UpdateUI();
         }
         UpdateUI();
+
+
     }
 
     public void LevelUp()
     {
         level++;
-        currentExp -= expToLevel;
+        //currentExp -= expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * expGrowth);
         playerEffects.GetComponent<Animator>().SetBool("onLvlUp", true);
         OnLevelUp(level);

@@ -487,8 +487,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c77f19d246a74b9fafae5503ee476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  timer: 0
   animator: {fileID: 4794540339711662562}
-  playerHealth: {fileID: 8285927900420678114}
+  playerAudio: {fileID: 0}
   playerMovement: {fileID: 8077975980162420445}
 --- !u!1 &5437797898616149807
 GameObject:
@@ -535,8 +537,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a79e6c0be10f484894f69d572e4e196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   projectile: {fileID: 4483327332936940491, guid: 45597de1490fa764da47c83279a16ed6, type: 3}
   projectileTransform: {fileID: 3215455985239504792}
+  timer: 0
 --- !u!1 &5678940758546288654
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,8 +805,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1344291251629801124}
   - component: {fileID: 4374591827230611085}
-  - component: {fileID: 8533245887467472795}
   - component: {fileID: 9100371186760478234}
+  - component: {fileID: 8533245887467472795}
   - component: {fileID: 8077975980162420445}
   - component: {fileID: 5174145080023325012}
   - component: {fileID: 8285927900420678114}
@@ -826,7 +830,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.11, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5488115690652159582}
@@ -890,6 +894,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &9100371186760478234
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747292621912704858}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!70 &8533245887467472795
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -925,33 +956,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.004158795, y: -0.025482297}
   m_Size: {x: 0.6921146, y: 1.0303209}
   m_Direction: 0
---- !u!50 &9100371186760478234
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8747292621912704858}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &8077975980162420445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,6 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52838539abc31a149b5cf24b074b10e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   faceDirection: 1
   rb: {fileID: 9100371186760478234}
   animat: {fileID: 5174145080023325012}
@@ -975,7 +980,8 @@ MonoBehaviour:
   isKnocked: 0
   secondAttack: 0
   block: {fileID: 6119944881615208526}
-  playerState: 0
+  playerAudio: {fileID: 0}
+  immobilized: 0
 --- !u!95 &5174145080023325012
 Animator:
   serializedVersion: 5
@@ -1009,10 +1015,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53f5828553ebe14e85f1e7b09152cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   healthText: {fileID: 0}
   hpDamageAnim: {fileID: 0}
   animator: {fileID: 5174145080023325012}
-  healthState: 0
+  playerAudio: {fileID: 0}
+  renderer: {fileID: 0}
+  wiggleTime: 0
 --- !u!114 &7378409120616427297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,6 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8590058842367d043ab9dfe486cdb2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
 --- !u!114 &3424793091655919240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,14 +1047,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1593e386ba8f634a86caf6ff45f0c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   animator: {fileID: 5174145080023325012}
+  timer: 0
   attackPointHorizontal: {fileID: 5488115690652159582}
   attackPointUp: {fileID: 790079747788386662}
   attackPointDown: {fileID: 6002421780547459776}
+  gismosOn: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
   playerMovement: {fileID: 8077975980162420445}
+  playerAudio: {fileID: 0}
 --- !u!114 &2663033394566626395
 MonoBehaviour:
   m_ObjectHideFlags: 0

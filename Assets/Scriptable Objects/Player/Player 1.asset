@@ -19,13 +19,13 @@ MonoBehaviour:
   knockBackStun: 0.2
   attackCD: 0.2
   blockCD: 1.5
-  statScaling: 0.1
-  fireballDamage: 2
-  fireballCD: 2
-  currentHP: 0
+  statScaling: 0.05
+  fireballDamage: 10
+  fireballCD: 6
+  currentHP: 30
   maxHP: 30
   speed: 5
-  gold: 52
+  gold: 0
   fireball: 0
-  healthState: 3
-  moveState: 5
+  healthState: 0
+  moveState: 0

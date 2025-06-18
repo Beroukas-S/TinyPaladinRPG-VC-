@@ -20,7 +20,7 @@ MonoBehaviour:
   active: 0
   completed: 0
   questDescription: Kill 10 goblins.
-  objectiveGoalProgress: 2
-  objectiveGoal: 2
+  objectiveGoalProgress: 0
+  objectiveGoal: 10
   objectives:
   - {fileID: 11400000, guid: 65da6c2899033e14f967641896c8bf52, type: 2}

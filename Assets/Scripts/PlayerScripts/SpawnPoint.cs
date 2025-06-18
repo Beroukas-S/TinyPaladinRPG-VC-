@@ -7,6 +7,9 @@ public class SpawnPoint : MonoBehaviour
     public SceneTracker lastScene;
     public SceneTracker newScene;
     public Transform playerTransform;
+    public Transform canvasTransform;
+    public Transform projectileTransform;
+    public GameObject entryPoint;
 
     void Awake()
     {
@@ -16,27 +19,43 @@ public class SpawnPoint : MonoBehaviour
                 switch (lastScene.scene)
                 {
                     case SceneTracker.SceneList.MainMenu:
-                        playerTransform.position = new Vector3(-972.35f, -556.2f, 0);
-                        playerTransform.localScale = new Vector3(1f, 1f, 0);
+                        entryPoint = GameObject.FindGameObjectWithTag("SceneEntryMenu");
+                        playerTransform.position = entryPoint.transform.position;
+                        this.faceDirection(1f);
+                        //playerTransform.localScale = new Vector3(1f, 1f, 0);
+                        //canvasTransform.localScale = new Vector3(1f, 1f, 0);
+                        //projectileTransform.localScale = new Vector3(1f, 1f, 0);
                         break;
                     case SceneTracker.SceneList.GoblinVillage:
-                        playerTransform.position = new Vector3(-878.05f, -521.61f, 0);
-                        playerTransform.localScale = new Vector3(1f, -1f, 0);
+                        entryPoint = GameObject.FindGameObjectWithTag("SceneEntryGoblins");
+                        playerTransform.position = entryPoint.transform.position;
+                        this.faceDirection(-1f);
                         break;
                     case SceneTracker.SceneList.WarlordIsland:
-                        playerTransform.position = new Vector3(-931.79f, -521.42f, 0);
-                        playerTransform.localScale = new Vector3(1f, 1f, 0);
+                        entryPoint = GameObject.FindGameObjectWithTag("SceneEntryWarlord");
+                        playerTransform.position = entryPoint.transform.position;
+                        this.faceDirection(1f);
                         break;
                 }
                 break;
             case SceneTracker.SceneList.GoblinVillage:
-                playerTransform.position = new Vector3(-945.65f, -528.6f, 0);
-                playerTransform.localScale = new Vector3(1f, 1f, 0);
+                entryPoint = GameObject.FindGameObjectWithTag("SceneEntryKnights");
+                playerTransform.position = entryPoint.transform.position;
+                this.faceDirection(1f);
                 break;
             case SceneTracker.SceneList.WarlordIsland:
-                playerTransform.position = new Vector3(-876.07f, -521.64f, 0);
-                playerTransform.localScale = new Vector3(1f, -1f, 0);
+                entryPoint = GameObject.FindGameObjectWithTag("SceneEntryKnights");
+                playerTransform.position = entryPoint.transform.position;
+                this.faceDirection(-1f);
                 break;
         }
     }
+
+    private void faceDirection(float _x)
+    {
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * _x, transform.localScale.y, transform.localScale.z);
+        canvasTransform.localScale = new Vector3(0.01f * _x, canvasTransform.localScale.y, canvasTransform.localScale.z);
+        projectileTransform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * _x, projectileTransform.localScale.y, projectileTransform.localScale.z);
+    }
+
 }

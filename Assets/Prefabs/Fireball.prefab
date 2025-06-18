@@ -137,10 +137,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: a40ed66f966059c46baf2c0e0810424c, type: 2}
+  boss: {fileID: 11400000, guid: 227b452b7f24efc47b6e2225e912dd43, type: 2}
   projectileSpeed: 10
   animator: {fileID: 8218802929188552328}
   audioSource: {fileID: -4353543808523444986}
   travelDistanceLimit: 10
+  playerTransform: {fileID: 0}
 --- !u!50 &3385468504488617053
 Rigidbody2D:
   serializedVersion: 4

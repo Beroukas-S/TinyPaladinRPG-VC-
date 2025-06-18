@@ -8,37 +8,24 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Player player;
     public int faceDirection = 1;
-
-
     public Rigidbody2D rb;
     public Animator animat;
-    
     public Grow growBig;
     public PlayerCombat playerCombat;
     public MouseDirection mouseDirection;
-
     public Transform canvasTransform;
     public Transform projectileTransform;
-
     public bool isKnocked = false;
-
-    //keeps track if it is a forestroke or backstroke
     public bool secondAttack = false;
-
     public PlayerBlock block;
-
-
     public PlayerAudio playerAudio;
     public bool immobilized = false;
-
-
 
     private void Start()
     {
         mouseDirection = GetComponent<MouseDirection>();
         player.ChangeMovementState(Player.MovementState.Idle);
     }
-
 
     void Update()
     {
@@ -82,8 +69,6 @@ public class PlayerMovement : MonoBehaviour
         {
             playerAudio.StepSound();
         }
-        
-
     }
 
     void Flip()
@@ -92,7 +77,6 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         canvasTransform.localScale = new Vector3 (canvasTransform.localScale.x * -1, canvasTransform.localScale.y, canvasTransform.localScale.z);
         projectileTransform.localScale = new Vector3(projectileTransform.localScale.x * -1, projectileTransform.localScale.y, projectileTransform.localScale.z);
-
     }
 
     public void KnockBack(Transform enemy,float knockBackForce,float duration)
@@ -102,8 +86,7 @@ public class PlayerMovement : MonoBehaviour
         block.BlockEnd();
         Vector2 direction = (transform.position - enemy.position).normalized;
         rb.velocity = direction * knockBackForce;
-        StartCoroutine(KnockBackTime(duration));
-        
+        StartCoroutine(KnockBackTime(duration));  
     }
 
     IEnumerator KnockBackTime(float time)
@@ -112,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector2.zero;
         isKnocked = false;
         player.ChangeMovementState(Player.MovementState.Idle);
-
     }
 
     //calls different method for backstroke or forestroke
@@ -178,7 +160,6 @@ public class PlayerMovement : MonoBehaviour
             }
             playerCombat.QuickAttack();
         }
-        
     }
 
     public void CheckHeavyAttack()

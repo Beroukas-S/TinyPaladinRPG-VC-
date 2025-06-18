@@ -28,8 +28,7 @@ public class Enemy_Health : MonoBehaviour
 
     public void ChangeHP(float amount)
     {
-        currentHP += amount;
-        
+        currentHP += amount;  
 
         if (currentHP > enemy.maxHP)
         {
@@ -42,9 +41,7 @@ public class Enemy_Health : MonoBehaviour
 
             GoldDrop();
             
-
             Destroy(gameObject);
-
         }
         GetHitRed();
     }
@@ -70,15 +67,11 @@ public class Enemy_Health : MonoBehaviour
 
     public void GoldDrop()
     {
-        
-
         //spawn Gold
         GameObject goldDrop = Instantiate(gold, transform.position, Quaternion.identity);
         //για να δώσω τιμή στο sorting layer
         var goldSprite = goldDrop.GetComponent<SpriteRenderer>();
         goldSprite.sortingOrder = enemyRenderer.sortingOrder;
-        
-
     }
 
 

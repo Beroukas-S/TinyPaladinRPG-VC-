@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class QuestsUI : MonoBehaviour
 {
-    [SerializeField] public Quest activeQuest;
+    [SerializeField] public QuestTracking questTracking;
     [SerializeField] private TextMeshProUGUI questTitleText;
     [SerializeField] private TextMeshProUGUI goalText;
     [SerializeField] private TextMeshProUGUI progressText;
@@ -25,10 +25,11 @@ public class QuestsUI : MonoBehaviour
 
     public void UpdateActiveQuest(Quest currentQuest)
     {
-        activeQuest = currentQuest;
+        questTracking.setActiveQuest(currentQuest);
         if (currentQuest.completed == true)
-        { 
-            activeQuest = null;
+        {
+            questTracking.setActiveQuest(null);
+            //activeQuest = null;
         }
     }
 
@@ -50,12 +51,12 @@ public class QuestsUI : MonoBehaviour
 
     public void UpdateCanvas()
     {
-        if (activeQuest != null)
+        if (questTracking.activeQuest != null)
         {
-            questTitleText.text = $"{activeQuest.questName}";
-            goalText.text = $"{activeQuest.questDescription}";
-            progressText.text = $"{activeQuest.objectiveGoalProgress} / {activeQuest.objectiveGoal}";
-            rewardsText.text = $"{activeQuest.goldReward} Gold {activeQuest.xpReward} XP";
+            questTitleText.text = $"{questTracking.activeQuest.questName}";
+            goalText.text = $"{questTracking.activeQuest.questDescription}";
+            progressText.text = $"{questTracking.activeQuest.objectiveGoalProgress} / {questTracking.activeQuest.objectiveGoal}";
+            rewardsText.text = $"{questTracking.activeQuest.goldReward} Gold {questTracking.activeQuest.xpReward} XP";
         }
         else
         {

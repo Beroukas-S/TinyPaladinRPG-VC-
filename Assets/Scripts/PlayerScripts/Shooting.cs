@@ -51,6 +51,10 @@ public class Shooting : MonoBehaviour
                 var MyScript = projectileCreate.GetComponent<SpriteRenderer>();
                 MyScript.sortingOrder = 15;
 
+                //Για το ποιος έφτιαξε το fireball
+                ProjectileScript myProjectileScript = projectileCreate.GetComponent<ProjectileScript>();
+                myProjectileScript.Initialize(true);
+
                 timer = player.fireballCD;
             }
         }
